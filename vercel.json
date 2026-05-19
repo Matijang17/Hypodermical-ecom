@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/shop/home-care/:slug.html",    "destination": "/shop/product.html?slug=:slug" },
+    { "source": "/shop/face/:slug.html",         "destination": "/shop/product.html?slug=:slug" },
+    { "source": "/shop/mesococktail/:slug.html", "destination": "/shop/product.html?slug=:slug" },
+    { "source": "/shop/body/:slug.html",         "destination": "/shop/product.html?slug=:slug" }
+  ]
+}
