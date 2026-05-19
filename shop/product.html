@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product — Hypodermical Benelux</title>
+  <meta name="description" content="Hypodermical Benelux — Professional aesthetic product detail." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Bodoni+Moda:ital,wght@0,700;1,400&family=Anton&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/header.css" />
+  <link rel="stylesheet" href="/assets/css/bubbles.css" />
+  <link rel="stylesheet" href="/shop/assets/css/shop.css" />
+</head>
+<body class="has-header-offset">
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner container">
+      <a href="/" class="logo" aria-label="Hypodermical home">
+        <img src="/assets/images/hypodermical-bubbles-animated.svg" alt="" class="logo-mark" width="28" height="24" />
+        <span class="logo-text">hypodermical<span class="logo-dot">.</span></span>
+      </a>
+      <nav class="header-nav" aria-label="Primary">
+        <a href="/pages/method.html" class="nav-link">The Method</a>
+        <a href="/pages/treatments.html" class="nav-link">Treatments</a>
+        <a href="/pages/professionals.html" class="nav-link">Professionals</a>
+        <a href="/shop/" class="nav-link">Shop</a>
+      </nav>
+      <div class="header-actions">
+        <a href="/shop/cart.html" class="header-cart-btn" aria-label="Shopping cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-badge" style="display:none" aria-live="polite">0</span>
+        </a>
+        <a href="/pages/contact.html" class="btn-header">Request a Demo</a>
+        <button class="header-nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ MAIN ═══ -->
+  <main class="product-page">
+    <div class="container">
+      <!-- Rendered by JS -->
+      <div id="product-root">
+        <p class="product-loading">Loading product…</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Templates for runtime rendering -->
+  <template id="tpl-product">
+    <nav class="product-breadcrumb" aria-label="Breadcrumb">
+      <a href="/shop/">Shop</a><span class="sep">/</span>
+      <a data-breadcrumb-cat-link></a><span class="sep">/</span>
+      <span class="current" data-breadcrumb-name></span>
+    </nav>
+
+    <section class="product-hero">
+      <div class="product-hero__media">
+        <span class="bubble-tag product-hero__badge" data-badge></span>
+        <img data-hero-img alt="" />
+      </div>
+
+      <div class="product-hero__details">
+        <span class="product-hero__subcat" data-subcat></span>
+        <h1 class="product-hero__title" data-name></h1>
+
+        <div class="product-hero__meta">
+          <span data-size></span>
+          <span data-concentration hidden></span>
+        </div>
+
+        <p class="product-hero__short" data-short></p>
+
+        <div class="product-hero__price-row" data-price-row>
+          <span class="product-hero__price" data-price></span>
+          <span class="product-hero__price-note" data-price-note></span>
+        </div>
+
+        <div class="product-hero__actions" data-actions></div>
+      </div>
+    </section>
+
+    <section class="product-section" data-section-benefits>
+      <span class="product-section__label">Key Benefits</span>
+      <h2 class="product-section__title">What this product does</h2>
+      <div class="benefits-grid" data-benefits></div>
+    </section>
+
+    <section class="product-section" data-section-indications>
+      <span class="product-section__label">Indications</span>
+      <h2 class="product-section__title">Best suited for</h2>
+      <div class="indications-list" data-indications></div>
+    </section>
+
+    <section class="product-section" data-section-system hidden>
+      <span class="product-section__label">System Components</span>
+      <h2 class="product-section__title">Part of a complete system</h2>
+      <div class="system-steps" data-system-steps></div>
+    </section>
+
+    <section class="product-section" data-section-protocol>
+      <span class="product-section__label">Protocol</span>
+      <h2 class="product-section__title">How to use</h2>
+      <div class="product-section__body" data-protocol></div>
+    </section>
+
+    <section class="product-section" data-section-ingredients>
+      <span class="product-section__label">Ingredients</span>
+      <h2 class="product-section__title">Active formulation</h2>
+      <div class="ingredients-block">
+        <p data-ingredients></p>
+      </div>
+    </section>
+  </template>
+
+  <template id="tpl-error">
+    <div class="product-error">
+      <span class="bubble-tag">Not Found</span>
+      <h1>Product not found</h1>
+      <p>We couldn't find that product. It may have been moved or the URL is incorrect.</p>
+      <a href="/shop/" class="btn-primary">Back to Shop →</a>
+    </div>
+  </template>
+
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/shop/assets/js/cart.js" defer></script>
+  <script src="/shop/assets/js/stripe-checkout.js" defer></script>
+  <script>
+    /* ═══════════════════════════════════════════════════════════
+       Product detail page renderer
+       Slug resolution order:
+         1. ?slug=X  (Vercel rewrite target)
+         2. ?sku=X   (manual override)
+         3. Last path segment without .html  (deep link fallback)
+       ═══════════════════════════════════════════════════════════ */
+    (function () {
+      const CATEGORY_LABELS = {
+        'home-care':    'Home Care',
+        'face':         'Face',
+        'mesococktail': 'Mesococktail',
+        'body':         'Body'
+      };
+
+      function escapeHtml(str) {
+        if (str == null) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function resolveSlug() {
+        const params = new URLSearchParams(window.location.search);
+        const fromQuery = params.get('slug') || params.get('sku');
+        if (fromQuery) return fromQuery;
+
+        // Fallback: last path segment minus .html, e.g. /shop/face/foo.html -> "foo"
+        const path = window.location.pathname;
+        const last = path.split('/').filter(Boolean).pop() || '';
+        if (last.endsWith('.html')) {
+          const base = last.slice(0, -5);
+          if (base && base !== 'product') return base;
+        }
+        return null;
+      }
+
+      function findProduct(products, slugOrSku) {
+        return products.find(p => p.slug === slugOrSku)
+            || products.find(p => p.sku === slugOrSku)
+            || products.find(p => p.sku.toLowerCase() === String(slugOrSku).toLowerCase());
+      }
+
+      function renderError() {
+        const root = document.getElementById('product-root');
+        const tpl = document.getElementById('tpl-error');
+        root.innerHTML = '';
+        root.appendChild(tpl.content.cloneNode(true));
+        document.title = 'Product Not Found — Hypodermical Benelux';
+      }
+
+      function buildActions(product) {
+        if (product.professional_use_only) {
+          return `
+            <a href="/pages/professionals.html?ref=${encodeURIComponent(product.sku)}"
+               class="btn-primary" style="flex:1;">
+              Request Professional Access →
+            </a>
+            <a href="/pages/contact.html" class="btn-secondary">Contact Sales</a>
+          `;
+        }
+        return `
+          <div class="product-hero__qty-control">
+            <button type="button" data-qty-dec aria-label="Decrease quantity">−</button>
+            <input type="number" min="1" max="99" value="1" id="product-qty" aria-label="Quantity" />
+            <button type="button" data-qty-inc aria-label="Increase quantity">+</button>
+          </div>
+          <button type="button" class="btn-primary" data-add-to-cart-detail data-sku="${escapeHtml(product.sku)}">
+            Add to Cart
+          </button>
+          <button type="button" class="btn-secondary" data-buy-now-detail data-sku="${escapeHtml(product.sku)}">
+            Buy Now
+          </button>
+        `;
+      }
+
+      function render(product) {
+        const root = document.getElementById('product-root');
+        const tpl = document.getElementById('tpl-product');
+        root.innerHTML = '';
+        const node = tpl.content.cloneNode(true);
+
+        // Breadcrumb
+        const catLink = node.querySelector('[data-breadcrumb-cat-link]');
+        catLink.href = '/shop/?filter=' + product.category;
+        catLink.textContent = CATEGORY_LABELS[product.category] || product.category;
+        node.querySelector('[data-breadcrumb-name]').textContent = product.short_name || product.name;
+
+        // Badge + image
+        const badge = node.querySelector('[data-badge]');
+        if (product.professional_use_only) {
+          badge.classList.add('pro');
+          badge.textContent = 'Professional Use Only';
+        } else {
+          badge.textContent = 'Available Online';
+        }
+
+        const img = node.querySelector('[data-hero-img]');
+        img.src = product.image;
+        img.alt = product.name;
+
+        // Header info
+        node.querySelector('[data-subcat]').textContent = product.subcategory || product.category;
+        node.querySelector('[data-name]').textContent = product.name;
+        node.querySelector('[data-size]').textContent = product.size || '';
+
+        if (product.concentration) {
+          const conc = node.querySelector('[data-concentration]');
+          conc.textContent = product.concentration;
+          conc.hidden = false;
+        }
+
+        node.querySelector('[data-short]').textContent = product.short_description || '';
+
+        // Price + actions
+        const priceEl = node.querySelector('[data-price]');
+        const priceNote = node.querySelector('[data-price-note]');
+        if (product.professional_use_only) {
+          priceEl.classList.add('pro');
+          priceEl.textContent = 'Request Pricing';
+          priceNote.textContent = 'Professional access required';
+        } else {
+          priceEl.textContent = '€' + (product.price / 100).toFixed(2).replace('.', ',');
+          priceNote.textContent = 'VAT included · Free shipping over €75';
+        }
+
+        const actions = node.querySelector('[data-actions]');
+        actions.innerHTML = buildActions(product);
+
+        // Key benefits
+        const benefits = node.querySelector('[data-benefits]');
+        const benefitsSec = node.querySelector('[data-section-benefits]');
+        if (product.key_benefits && product.key_benefits.length) {
+          benefits.innerHTML = product.key_benefits.map((b, i) => `
+            <div class="benefit-card">
+              <span class="benefit-card__num">${String(i + 1).padStart(2, '0')}</span>
+              <span class="benefit-card__text">${escapeHtml(b)}</span>
+            </div>
+          `).join('');
+        } else {
+          benefitsSec.hidden = true;
+        }
+
+        // Indications
+        const inds = node.querySelector('[data-indications]');
+        const indsSec = node.querySelector('[data-section-indications]');
+        if (product.indications && product.indications.length) {
+          inds.innerHTML = product.indications
+            .map(i => `<span class="indication-chip">${escapeHtml(i)}</span>`)
+            .join('');
+        } else {
+          indsSec.hidden = true;
+        }
+
+        // System products (only for systems)
+        const sysSection = node.querySelector('[data-section-system]');
+        const sysSteps = node.querySelector('[data-system-steps]');
+        if (product.system_products && product.system_products.length) {
+          sysSteps.innerHTML = product.system_products.map(sp => `
+            <div class="system-step">
+              <span class="system-step__num">${String(sp.step).padStart(2, '0')}</span>
+              <div>
+                <div class="system-step__name">${escapeHtml(sp.name)}</div>
+                <div class="system-step__sku">${escapeHtml(sp.sku)}</div>
+              </div>
+            </div>
+          `).join('');
+          sysSection.hidden = false;
+        }
+
+        // Protocol
+        const protocolSec = node.querySelector('[data-section-protocol]');
+        if (product.protocol) {
+          node.querySelector('[data-protocol]').textContent = product.protocol;
+        } else {
+          protocolSec.hidden = true;
+        }
+
+        // Ingredients
+        const ingSec = node.querySelector('[data-section-ingredients]');
+        if (product.ingredients) {
+          node.querySelector('[data-ingredients]').textContent = product.ingredients;
+        } else {
+          ingSec.hidden = true;
+        }
+
+        root.appendChild(node);
+
+        // Meta updates for SEO / sharing
+        document.title = product.name + ' — Hypodermical Benelux';
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc && product.short_description) desc.content = product.short_description;
+
+        // Wire local handlers (cart.js global delegation handles [data-add-to-cart], but we need qty)
+        wireDetailActions(product);
+      }
+
+      function wireDetailActions(product) {
+        const qtyInput = document.getElementById('product-qty');
+        const dec = document.querySelector('[data-qty-dec]');
+        const inc = document.querySelector('[data-qty-inc]');
+        const addBtn = document.querySelector('[data-add-to-cart-detail]');
+        const buyBtn = document.querySelector('[data-buy-now-detail]');
+
+        function getQty() {
+          const n = parseInt(qtyInput.value, 10) || 1;
+          return Math.max(1, Math.min(99, n));
+        }
+
+        if (dec) dec.addEventListener('click', () => { qtyInput.value = Math.max(1, getQty() - 1); });
+        if (inc) inc.addEventListener('click', () => { qtyInput.value = Math.min(99, getQty() + 1); });
+
+        if (addBtn) {
+          addBtn.addEventListener('click', () => HypoCart.add(product, getQty()));
+        }
+        if (buyBtn) {
+          buyBtn.addEventListener('click', () => {
+            HypoCart.add(product, getQty());
+            window.location.href = '/shop/cart.html';
+          });
+        }
+      }
+
+      async function init() {
+        const slug = resolveSlug();
+        if (!slug) { renderError(); return; }
+
+        try {
+          const products = await window.HypoProducts.all();
+          const product = findProduct(products, slug);
+          if (!product) { renderError(); return; }
+          render(product);
+        } catch (err) {
+          console.error('Failed to load product:', err);
+          renderError();
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', init);
+    })();
+  </script>
+</body>
+</html>
