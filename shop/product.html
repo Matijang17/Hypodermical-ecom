@@ -15,7 +15,6 @@
 </head>
 <body class="has-header-offset">
 
-  <!-- ═══ HEADER ═══ -->
   <header class="site-header" id="site-header">
     <div class="header-inner container">
       <a href="/" class="logo" aria-label="Hypodermical home">
@@ -45,82 +44,13 @@
     </div>
   </header>
 
-  <!-- ═══ MAIN ═══ -->
   <main class="product-page">
     <div class="container">
-      <!-- Rendered by JS -->
       <div id="product-root">
         <p class="product-loading">Loading product…</p>
       </div>
     </div>
   </main>
-
-  <!-- Templates for runtime rendering -->
-  <template id="tpl-product">
-    <nav class="product-breadcrumb" aria-label="Breadcrumb">
-      <a href="/shop/">Shop</a><span class="sep">/</span>
-      <a data-breadcrumb-cat-link></a><span class="sep">/</span>
-      <span class="current" data-breadcrumb-name></span>
-    </nav>
-
-    <section class="product-hero">
-      <div class="product-hero__media">
-        <span class="bubble-tag product-hero__badge" data-badge></span>
-        <img data-hero-img alt="" />
-      </div>
-
-      <div class="product-hero__details">
-        <span class="product-hero__subcat" data-subcat></span>
-        <h1 class="product-hero__title" data-name></h1>
-
-        <div class="product-hero__meta">
-          <span data-size></span>
-          <span data-concentration hidden></span>
-        </div>
-
-        <p class="product-hero__short" data-short></p>
-
-        <div class="product-hero__price-row" data-price-row>
-          <span class="product-hero__price" data-price></span>
-          <span class="product-hero__price-note" data-price-note></span>
-        </div>
-
-        <div class="product-hero__actions" data-actions></div>
-      </div>
-    </section>
-
-    <section class="product-section" data-section-benefits>
-      <span class="product-section__label">Key Benefits</span>
-      <h2 class="product-section__title">What this product does</h2>
-      <div class="benefits-grid" data-benefits></div>
-    </section>
-
-    <section class="product-section" data-section-indications>
-      <span class="product-section__label">Indications</span>
-      <h2 class="product-section__title">Best suited for</h2>
-      <div class="indications-list" data-indications></div>
-    </section>
-
-    <section class="product-section" data-section-system hidden>
-      <span class="product-section__label">System Components</span>
-      <h2 class="product-section__title">Part of a complete system</h2>
-      <div class="system-steps" data-system-steps></div>
-    </section>
-
-    <section class="product-section" data-section-protocol>
-      <span class="product-section__label">Protocol</span>
-      <h2 class="product-section__title">How to use</h2>
-      <div class="product-section__body" data-protocol></div>
-    </section>
-
-    <section class="product-section" data-section-ingredients>
-      <span class="product-section__label">Ingredients</span>
-      <h2 class="product-section__title">Active formulation</h2>
-      <div class="ingredients-block">
-        <p data-ingredients></p>
-      </div>
-    </section>
-  </template>
 
   <template id="tpl-error">
     <div class="product-error">
@@ -136,38 +66,28 @@
   <script src="/shop/assets/js/stripe-checkout.js" defer></script>
   <script>
     /* ═══════════════════════════════════════════════════════════
-       Product detail page renderer
-       Slug resolution order:
-         1. ?slug=X  (Vercel rewrite target)
-         2. ?sku=X   (manual override)
-         3. Last path segment without .html  (deep link fallback)
+       Product detail renderer — rich catalogue shape
        ═══════════════════════════════════════════════════════════ */
     (function () {
       const CATEGORY_LABELS = {
         'home-care':    'Home Care',
-        'face':         'Face',
+        'face':         'Face Treatments',
         'mesococktail': 'Mesococktail',
         'body':         'Body'
       };
 
-      function escapeHtml(str) {
+      function esc(str) {
         if (str == null) return '';
         return String(str)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#039;');
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
       }
 
       function resolveSlug() {
         const params = new URLSearchParams(window.location.search);
         const fromQuery = params.get('slug') || params.get('sku');
         if (fromQuery) return fromQuery;
-
-        // Fallback: last path segment minus .html, e.g. /shop/face/foo.html -> "foo"
-        const path = window.location.pathname;
-        const last = path.split('/').filter(Boolean).pop() || '';
+        const last = (window.location.pathname.split('/').filter(Boolean).pop() || '');
         if (last.endsWith('.html')) {
           const base = last.slice(0, -5);
           if (base && base !== 'product') return base;
@@ -181,22 +101,54 @@
             || products.find(p => p.sku.toLowerCase() === String(slugOrSku).toLowerCase());
       }
 
-      function renderError() {
-        const root = document.getElementById('product-root');
-        const tpl = document.getElementById('tpl-error');
-        root.innerHTML = '';
-        root.appendChild(tpl.content.cloneNode(true));
-        document.title = 'Product Not Found — Hypodermical Benelux';
+      /* ───────────── Section builders ───────────── */
+
+      function sectionShell(label, title, bodyHtml) {
+        return `
+          <section class="product-section">
+            <span class="product-section__label">${esc(label)}</span>
+            <h2 class="product-section__title">${esc(title)}</h2>
+            ${bodyHtml}
+          </section>
+        `;
       }
 
-      function buildActions(product) {
-        if (product.professional_use_only) {
+      function priceMarkup(p) {
+        if (p.professional_use_only) {
+          return {
+            cls: 'pro',
+            text: 'Request Pricing',
+            note: 'Professional access required'
+          };
+        }
+        if (p.price == null) {
+          return {
+            cls: 'pro',
+            text: 'Price on Request',
+            note: 'Contact us to order'
+          };
+        }
+        return {
+          cls: '',
+          text: '€' + (p.price / 100).toFixed(2).replace('.', ','),
+          note: 'VAT included · Free shipping over €75'
+        };
+      }
+
+      function actionsMarkup(p) {
+        if (p.professional_use_only) {
           return `
-            <a href="/pages/professionals.html?ref=${encodeURIComponent(product.sku)}"
-               class="btn-primary" style="flex:1;">
+            <a href="/pages/professionals.html?ref=${encodeURIComponent(p.sku)}" class="btn-primary" style="flex:1;">
               Request Professional Access →
             </a>
             <a href="/pages/contact.html" class="btn-secondary">Contact Sales</a>
+          `;
+        }
+        if (p.price == null) {
+          return `
+            <a href="/pages/contact.html?ref=${encodeURIComponent(p.sku)}" class="btn-primary" style="flex:1;">
+              Contact to Order →
+            </a>
           `;
         }
         return `
@@ -205,166 +157,260 @@
             <input type="number" min="1" max="99" value="1" id="product-qty" aria-label="Quantity" />
             <button type="button" data-qty-inc aria-label="Increase quantity">+</button>
           </div>
-          <button type="button" class="btn-primary" data-add-to-cart-detail data-sku="${escapeHtml(product.sku)}">
-            Add to Cart
-          </button>
-          <button type="button" class="btn-secondary" data-buy-now-detail data-sku="${escapeHtml(product.sku)}">
-            Buy Now
-          </button>
+          <button type="button" class="btn-primary" data-add-to-cart-detail data-sku="${esc(p.sku)}">Add to Cart</button>
+          <button type="button" class="btn-secondary" data-buy-now-detail data-sku="${esc(p.sku)}">Buy Now</button>
         `;
       }
 
-      function render(product) {
-        const root = document.getElementById('product-root');
-        const tpl = document.getElementById('tpl-product');
-        root.innerHTML = '';
-        const node = tpl.content.cloneNode(true);
-
-        // Breadcrumb
-        const catLink = node.querySelector('[data-breadcrumb-cat-link]');
-        catLink.href = '/shop/?filter=' + product.category;
-        catLink.textContent = CATEGORY_LABELS[product.category] || product.category;
-        node.querySelector('[data-breadcrumb-name]').textContent = product.short_name || product.name;
-
-        // Badge + image
-        const badge = node.querySelector('[data-badge]');
-        if (product.professional_use_only) {
-          badge.classList.add('pro');
-          badge.textContent = 'Professional Use Only';
-        } else {
-          badge.textContent = 'Available Online';
+      function badgeMarkup(p) {
+        if (p.professional_use_only) {
+          return `<span class="bubble-tag pro product-hero__badge">Professional Use Only</span>`;
         }
-
-        const img = node.querySelector('[data-hero-img]');
-        img.src = product.image;
-        img.alt = product.name;
-
-        // Header info
-        node.querySelector('[data-subcat]').textContent = product.subcategory || product.category;
-        node.querySelector('[data-name]').textContent = product.name;
-        node.querySelector('[data-size]').textContent = product.size || '';
-
-        if (product.concentration) {
-          const conc = node.querySelector('[data-concentration]');
-          conc.textContent = product.concentration;
-          conc.hidden = false;
-        }
-
-        node.querySelector('[data-short]').textContent = product.short_description || '';
-
-        // Price + actions
-        const priceEl = node.querySelector('[data-price]');
-        const priceNote = node.querySelector('[data-price-note]');
-        if (product.professional_use_only) {
-          priceEl.classList.add('pro');
-          priceEl.textContent = 'Request Pricing';
-          priceNote.textContent = 'Professional access required';
-        } else {
-          priceEl.textContent = '€' + (product.price / 100).toFixed(2).replace('.', ',');
-          priceNote.textContent = 'VAT included · Free shipping over €75';
-        }
-
-        const actions = node.querySelector('[data-actions]');
-        actions.innerHTML = buildActions(product);
-
-        // Key benefits
-        const benefits = node.querySelector('[data-benefits]');
-        const benefitsSec = node.querySelector('[data-section-benefits]');
-        if (product.key_benefits && product.key_benefits.length) {
-          benefits.innerHTML = product.key_benefits.map((b, i) => `
-            <div class="benefit-card">
-              <span class="benefit-card__num">${String(i + 1).padStart(2, '0')}</span>
-              <span class="benefit-card__text">${escapeHtml(b)}</span>
-            </div>
-          `).join('');
-        } else {
-          benefitsSec.hidden = true;
-        }
-
-        // Indications
-        const inds = node.querySelector('[data-indications]');
-        const indsSec = node.querySelector('[data-section-indications]');
-        if (product.indications && product.indications.length) {
-          inds.innerHTML = product.indications
-            .map(i => `<span class="indication-chip">${escapeHtml(i)}</span>`)
-            .join('');
-        } else {
-          indsSec.hidden = true;
-        }
-
-        // System products (only for systems)
-        const sysSection = node.querySelector('[data-section-system]');
-        const sysSteps = node.querySelector('[data-system-steps]');
-        if (product.system_products && product.system_products.length) {
-          sysSteps.innerHTML = product.system_products.map(sp => `
-            <div class="system-step">
-              <span class="system-step__num">${String(sp.step).padStart(2, '0')}</span>
-              <div>
-                <div class="system-step__name">${escapeHtml(sp.name)}</div>
-                <div class="system-step__sku">${escapeHtml(sp.sku)}</div>
-              </div>
-            </div>
-          `).join('');
-          sysSection.hidden = false;
-        }
-
-        // Protocol
-        const protocolSec = node.querySelector('[data-section-protocol]');
-        if (product.protocol) {
-          node.querySelector('[data-protocol]').textContent = product.protocol;
-        } else {
-          protocolSec.hidden = true;
-        }
-
-        // Ingredients
-        const ingSec = node.querySelector('[data-section-ingredients]');
-        if (product.ingredients) {
-          node.querySelector('[data-ingredients]').textContent = product.ingredients;
-        } else {
-          ingSec.hidden = true;
-        }
-
-        root.appendChild(node);
-
-        // Meta updates for SEO / sharing
-        document.title = product.name + ' — Hypodermical Benelux';
-        const desc = document.querySelector('meta[name="description"]');
-        if (desc && product.short_description) desc.content = product.short_description;
-
-        // Wire local handlers (cart.js global delegation handles [data-add-to-cart], but we need qty)
-        wireDetailActions(product);
+        return `<span class="bubble-tag product-hero__badge">Available Retail</span>`;
       }
 
-      function wireDetailActions(product) {
+      function metaPills(p) {
+        const pills = [];
+        if (p.size) pills.push(p.size);
+        if (p.concentration) pills.push(p.concentration);
+        if (p.type) pills.push(p.type);
+        if (p.natural_percentage) pills.push(p.natural_percentage + ' natural');
+        if (p.protocol_step) pills.push(p.protocol_step);
+        return pills.map(t => `<span>${esc(t)}</span>`).join('');
+      }
+
+      function heroMarkup(p) {
+        const price = priceMarkup(p);
+        return `
+          <section class="product-hero">
+            <div class="product-hero__media">
+              ${badgeMarkup(p)}
+              <img src="${esc(p.image)}" alt="${esc(p.name)}" />
+            </div>
+            <div class="product-hero__details">
+              <span class="product-hero__subcat">${esc(p.subcategory || p.category)}</span>
+              <h1 class="product-hero__title">${esc(p.name)}</h1>
+              <div class="product-hero__meta">${metaPills(p)}</div>
+              <p class="product-hero__short">${esc(p.short_description)}</p>
+              ${p.concern ? `<p class="product-hero__concern"><strong>Targets:</strong> ${esc(p.concern)}</p>` : ''}
+              ${p.use_as ? `<p class="product-hero__use-as">${esc(p.use_as)}</p>` : ''}
+              <div class="product-hero__price-row">
+                <span class="product-hero__price ${price.cls}">${esc(price.text)}</span>
+                <span class="product-hero__price-note">${esc(price.note)}</span>
+              </div>
+              <div class="product-hero__actions">${actionsMarkup(p)}</div>
+              ${p.note ? `<p class="product-hero__note"><strong>Note:</strong> ${esc(p.note)}</p>` : ''}
+            </div>
+          </section>
+        `;
+      }
+
+      function fullDescriptionSection(p) {
+        if (!p.full_description) return '';
+        return sectionShell('About this product', 'In detail',
+          `<div class="product-section__body"><p>${esc(p.full_description)}</p></div>`);
+      }
+
+      function benefitsSection(p) {
+        if (!p.key_benefits || !p.key_benefits.length) return '';
+        const cards = p.key_benefits.map((b, i) => `
+          <div class="benefit-card">
+            <span class="benefit-card__num">${String(i + 1).padStart(2, '0')}</span>
+            <span class="benefit-card__text">${esc(b)}</span>
+          </div>
+        `).join('');
+        return sectionShell('Key Benefits', 'What this product does',
+          `<div class="benefits-grid">${cards}</div>`);
+      }
+
+      function layersSection(p) {
+        if (!p.layers || !p.layers.length) return '';
+        const cards = p.layers.map((layer, i) => `
+          <div class="layer-card">
+            <div class="layer-card__head">
+              <span class="layer-card__num">${String(i + 1).padStart(2, '0')}</span>
+              <h3 class="layer-card__name">${esc(layer.layer)}</h3>
+            </div>
+            <ul class="layer-card__ingredients">
+              ${layer.ingredients.map(ing => `<li>${esc(ing)}</li>`).join('')}
+            </ul>
+          </div>
+        `).join('');
+        return sectionShell('Three-Layer Formula', 'The science of delivery',
+          `<div class="layers-grid">${cards}</div>`);
+      }
+
+      function activeIngredientsSection(p) {
+        if (!p.active_ingredients || !p.active_ingredients.length) return '';
+        const rows = p.active_ingredients.map(a => `
+          <div class="ingredient-row">
+            <div class="ingredient-row__name">${esc(a.name)}</div>
+            <div class="ingredient-row__action">${esc(a.action)}</div>
+          </div>
+        `).join('');
+        return sectionShell('Active Ingredients', 'Active formulation',
+          `<div class="ingredient-table">${rows}</div>`);
+      }
+
+      function indicationsSection(p) {
+        if (!p.indications || !p.indications.length) return '';
+        const chips = p.indications.map(i => `<span class="indication-chip">${esc(i)}</span>`).join('');
+        return sectionShell('Indications', 'Best suited for',
+          `<div class="indications-list">${chips}</div>`);
+      }
+
+      function systemProductsSection(p) {
+        if (!p.system_products || !p.system_products.length) return '';
+        const steps = p.system_products.map(sp => `
+          <a class="system-step-card" href="/shop/product.html?slug=${esc(sp.sku)}">
+            <span class="system-step-card__num">${esc(sp.step)}</span>
+            <div class="system-step-card__body">
+              <div class="system-step-card__name">${esc(sp.name)}</div>
+              ${sp.size ? `<div class="system-step-card__size">${esc(sp.size)}</div>` : ''}
+              ${sp.description ? `<div class="system-step-card__desc">${esc(sp.description)}</div>` : ''}
+            </div>
+            <svg class="system-step-card__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        `).join('');
+        return sectionShell('System Composition', 'Everything in this system',
+          `<div class="system-steps-grid">${steps}</div>`);
+      }
+
+      function belongsToSection(p) {
+        if (!p.belongs_to_systems || !p.belongs_to_systems.length) return '';
+        const cards = p.belongs_to_systems.map(sys => `
+          <a class="belongs-card" href="/shop/product.html?slug=${esc(sys.sku)}">
+            <div>
+              <span class="belongs-card__label">Part of</span>
+              <div class="belongs-card__name">${esc(sys.name)}</div>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        `).join('');
+        return sectionShell('System Membership', 'Used as part of these systems',
+          `<div class="belongs-grid">${cards}</div>`);
+      }
+
+      function technologySection(p) {
+        if (!p.technology) return '';
+        return sectionShell('Technology', 'Application method',
+          `<div class="product-section__body"><p>${esc(p.technology)}</p></div>`);
+      }
+
+      function protocolSection(p) {
+        const parts = [];
+        if (p.protocol_sessions) parts.push(`<strong>${p.protocol_sessions} sessions</strong>`);
+        if (p.session_frequency) parts.push(esc(p.session_frequency));
+        if (p.skin_type) parts.push('For ' + esc(p.skin_type));
+        if (!parts.length) return '';
+        return sectionShell('Protocol', 'Treatment plan',
+          `<div class="product-section__body"><p>${parts.join(' · ')}</p></div>`);
+      }
+
+      function recoverySection(p) {
+        if (!p.recovery) return '';
+        return sectionShell('Recovery', 'After treatment',
+          `<div class="product-section__body"><p>${esc(p.recovery)}</p></div>`);
+      }
+
+      function instructionsSection(p) {
+        if (!p.instructions || !p.instructions.length) return '';
+        const steps = p.instructions.map((s, i) => `
+          <li class="instruction-step">
+            <span class="instruction-step__num">${String(i + 1).padStart(2, '0')}</span>
+            <span class="instruction-step__text">${esc(s)}</span>
+          </li>
+        `).join('');
+        return sectionShell('Instructions', 'How to use',
+          `<ol class="instructions-list">${steps}</ol>`);
+      }
+
+      function dualUseSection(p) {
+        if (!p.professional_use && !p.home_use) return '';
+        return sectionShell('Use', 'Professional & at home',
+          `<div class="dual-use-grid">
+            ${p.professional_use ? `<div class="dual-use-card">
+              <span class="dual-use-card__label">In the clinic</span>
+              <p>${esc(p.professional_use)}</p>
+            </div>` : ''}
+            ${p.home_use ? `<div class="dual-use-card">
+              <span class="dual-use-card__label">At home</span>
+              <p>${esc(p.home_use)}</p>
+            </div>` : ''}
+          </div>`);
+      }
+
+      /* ───────────── Render ───────────── */
+
+      function render(p) {
+        const root = document.getElementById('product-root');
+        const cat = CATEGORY_LABELS[p.category] || p.category;
+
+        const breadcrumb = `
+          <nav class="product-breadcrumb" aria-label="Breadcrumb">
+            <a href="/shop/">Shop</a><span class="sep">/</span>
+            <a href="/shop/?filter=${esc(p.category)}">${esc(cat)}</a><span class="sep">/</span>
+            <span class="current">${esc(p.short_name || p.name)}</span>
+          </nav>
+        `;
+
+        const html = [
+          breadcrumb,
+          heroMarkup(p),
+          fullDescriptionSection(p),
+          benefitsSection(p),
+          layersSection(p),
+          activeIngredientsSection(p),
+          indicationsSection(p),
+          systemProductsSection(p),
+          belongsToSection(p),
+          dualUseSection(p),
+          technologySection(p),
+          protocolSection(p),
+          recoverySection(p),
+          instructionsSection(p)
+        ].join('');
+
+        root.innerHTML = html;
+
+        // Update meta
+        document.title = p.name + ' — Hypodermical Benelux';
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc && p.short_description) desc.content = p.short_description;
+
+        wireDetailActions(p);
+      }
+
+      function renderError() {
+        const root = document.getElementById('product-root');
+        root.innerHTML = '';
+        root.appendChild(document.getElementById('tpl-error').content.cloneNode(true));
+        document.title = 'Product Not Found — Hypodermical Benelux';
+      }
+
+      function wireDetailActions(p) {
         const qtyInput = document.getElementById('product-qty');
+        if (!qtyInput) return;
+
         const dec = document.querySelector('[data-qty-dec]');
         const inc = document.querySelector('[data-qty-inc]');
         const addBtn = document.querySelector('[data-add-to-cart-detail]');
         const buyBtn = document.querySelector('[data-buy-now-detail]');
 
-        function getQty() {
-          const n = parseInt(qtyInput.value, 10) || 1;
-          return Math.max(1, Math.min(99, n));
-        }
+        const getQty = () => Math.max(1, Math.min(99, parseInt(qtyInput.value, 10) || 1));
 
         if (dec) dec.addEventListener('click', () => { qtyInput.value = Math.max(1, getQty() - 1); });
         if (inc) inc.addEventListener('click', () => { qtyInput.value = Math.min(99, getQty() + 1); });
-
-        if (addBtn) {
-          addBtn.addEventListener('click', () => HypoCart.add(product, getQty()));
-        }
-        if (buyBtn) {
-          buyBtn.addEventListener('click', () => {
-            HypoCart.add(product, getQty());
-            window.location.href = '/shop/cart.html';
-          });
-        }
+        if (addBtn) addBtn.addEventListener('click', () => HypoCart.add(p, getQty()));
+        if (buyBtn) buyBtn.addEventListener('click', () => {
+          HypoCart.add(p, getQty());
+          window.location.href = '/shop/cart.html';
+        });
       }
 
       async function init() {
         const slug = resolveSlug();
         if (!slug) { renderError(); return; }
-
         try {
           const products = await window.HypoProducts.all();
           const product = findProduct(products, slug);
