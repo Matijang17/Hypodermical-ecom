@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hypodermical Benelux — Professional Aesthetic Systems</title>
+  <meta name="description" content="Professional aesthetic treatment systems and home care from Hypodermical. Based on 16 biological markers of ageing. Benelux distribution." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Bodoni+Moda:ital,wght@0,700;1,400&family=Anton&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/header.css" />
+  <link rel="stylesheet" href="/assets/css/bubbles.css" />
+  <link rel="stylesheet" href="/shop/assets/css/shop.css" />
+  <style>
+    /* ─── Landing page only ───────────────────────────────── */
+    .landing-hero {
+      position: relative;
+      min-height: 100vh;
+      padding-top: calc(var(--header-height) + 80px);
+      padding-bottom: 80px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .landing-hero__inner {
+      position: relative;
+      z-index: 2;
+      max-width: 880px;
+    }
+    .landing-hero__title {
+      font-family: var(--font-display);
+      color: var(--color-white);
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.025em;
+      margin: 22px 0 28px;
+    }
+    .landing-hero__title em {
+      font-style: italic;
+      color: var(--color-sand);
+      font-weight: 400;
+    }
+    .landing-hero__title .dot { color: var(--color-sand); }
+    .landing-hero__sub {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: clamp(16px, 1.6vw, 19px);
+      line-height: 1.55;
+      max-width: 620px;
+      margin-bottom: 40px;
+    }
+    .landing-hero__cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 64px;
+    }
+    .landing-hero__stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 36px;
+      max-width: 760px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .landing-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .landing-stat__num {
+      font-family: var(--font-display);
+      font-size: 38px;
+      font-weight: 700;
+      color: var(--color-white);
+      line-height: 1;
+    }
+    .landing-stat__num em {
+      color: var(--color-sand);
+      font-style: italic;
+      font-weight: 400;
+    }
+    .landing-stat__label {
+      font-family: var(--font-primary);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    /* Brand pitch section */
+    .landing-pitch {
+      padding: 120px 0;
+      background: var(--color-white);
+    }
+    .landing-pitch__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .landing-pitch { padding: 80px 0; }
+      .landing-pitch__grid { grid-template-columns: 1fr; gap: 48px; }
+    }
+    .landing-pitch__text h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin: 14px 0 24px;
+    }
+    .landing-pitch__text p {
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .landing-pitch__image {
+      aspect-ratio: 4 / 5;
+      background: var(--color-light-grey) center/cover;
+      position: relative;
+      overflow: hidden;
+    }
+    .landing-pitch__image img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    /* CTA strip */
+    .landing-cta-strip {
+      background: var(--color-sand);
+      padding: 80px 0;
+      text-align: center;
+    }
+    .landing-cta-strip h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 18px;
+    }
+    .landing-cta-strip p {
+      max-width: 560px;
+      margin: 0 auto 32px;
+      color: var(--color-charcoal);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="site-header header--transparent" id="site-header">
+    <div class="header-inner container">
+      <a href="/" class="logo" aria-label="Hypodermical home">
+        <img src="/assets/images/hypodermical-bubbles-animated.svg" alt="" class="logo-mark" width="28" height="24" />
+        <span class="logo-text">hypodermical<span class="logo-dot">.</span></span>
+      </a>
+
+      <nav class="header-nav" aria-label="Primary">
+        <a href="/pages/method.html" class="nav-link">The Method</a>
+        <a href="/pages/treatments.html" class="nav-link">Treatments</a>
+        <a href="/pages/professionals.html" class="nav-link">Professionals</a>
+        <a href="/shop/" class="nav-link">Shop</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/shop/cart.html" class="header-cart-btn" aria-label="Shopping cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-badge" style="display:none" aria-live="polite">0</span>
+        </a>
+        <a href="/shop/" class="btn-header">Shop Now</a>
+        <button class="header-nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="landing-hero section--black">
+    <span class="bubble-float" style="width:520px;height:520px;top:-120px;right:-160px;border-color:rgba(255,255,255,0.06);" aria-hidden="true"></span>
+    <span class="bubble-float" style="width:240px;height:240px;bottom:80px;left:-80px;border-color:rgba(255,255,255,0.05);animation-delay:-3s;" aria-hidden="true"></span>
+    <span class="bubble-float filled" style="width:14px;height:14px;top:30%;left:48%;background:var(--color-sand);opacity:0.6;animation-delay:-2s;" aria-hidden="true"></span>
+
+    <div class="container landing-hero__inner">
+      <span class="bubble-tag white">Benelux · Professional Aesthetics</span>
+      <h1 class="landing-hero__title">
+        Science<br>
+        meets<br>
+        <em>luxury<span class="dot">.</span></em>
+      </h1>
+      <p class="landing-hero__sub">
+        Hypodermical builds professional aesthetic systems targeting the 16 biological markers
+        of ageing. Needle-free protocols. Visible results from session one. Home care that
+        extends the work of the clinic.
+      </p>
+      <div class="landing-hero__cta-row">
+        <a href="/shop/" class="btn-primary" style="background:var(--color-white);color:var(--color-black);border-color:var(--color-white);">
+          Browse the Shop →
+        </a>
+        <a href="/pages/professionals.html" class="btn-ghost-light">For Professionals</a>
+      </div>
+
+      <div class="landing-hero__stats">
+        <div class="landing-stat">
+          <span class="landing-stat__num"><em>16</em></span>
+          <span class="landing-stat__label">Biological Markers</span>
+        </div>
+        <div class="landing-stat">
+          <span class="landing-stat__num"><em>90</em>+</span>
+          <span class="landing-stat__label">Treatment Protocols</span>
+        </div>
+        <div class="landing-stat">
+          <span class="landing-stat__num"><em>22</em></span>
+          <span class="landing-stat__label">Products in Range</span>
+        </div>
+        <div class="landing-stat">
+          <span class="landing-stat__num"><em>1</em></span>
+          <span class="landing-stat__label">Session to Results</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TRUST MARQUEE ═══ -->
+  <div class="trust-marquee" aria-label="Brand highlights">
+    <div class="trust-marquee__track">
+      <span>16 BIOLOGICAL MARKERS</span><span class="sep">◆</span>
+      <span>NEEDLE-FREE</span><span class="sep">◆</span>
+      <span>90+ PROTOCOLS</span><span class="sep">◆</span>
+      <span>100% NATURAL INGREDIENTS</span><span class="sep">◆</span>
+      <span>RESULTS FROM SESSION ONE</span><span class="sep">◆</span>
+      <span>PROFESSIONAL USE</span><span class="sep">◆</span>
+      <span>NO ANIMAL ORIGIN INGREDIENTS</span><span class="sep">◆</span>
+      <span aria-hidden="true">16 BIOLOGICAL MARKERS</span><span class="sep" aria-hidden="true">◆</span>
+      <span aria-hidden="true">NEEDLE-FREE</span><span class="sep" aria-hidden="true">◆</span>
+      <span aria-hidden="true">90+ PROTOCOLS</span><span class="sep" aria-hidden="true">◆</span>
+      <span aria-hidden="true">100% NATURAL INGREDIENTS</span><span class="sep" aria-hidden="true">◆</span>
+      <span aria-hidden="true">RESULTS FROM SESSION ONE</span><span class="sep" aria-hidden="true">◆</span>
+      <span aria-hidden="true">PROFESSIONAL USE</span><span class="sep" aria-hidden="true">◆</span>
+      <span aria-hidden="true">NO ANIMAL ORIGIN INGREDIENTS</span><span class="sep" aria-hidden="true">◆</span>
+    </div>
+  </div>
+
+  <!-- ═══ PITCH ═══ -->
+  <section class="landing-pitch">
+    <div class="container">
+      <div class="landing-pitch__grid">
+        <div class="landing-pitch__text">
+          <span class="bubble-tag">The Method</span>
+          <h2>Built on biology, not trends.</h2>
+          <p>
+            Every Hypodermical product targets one of the 16 biological markers identified
+            in modern dermatological research. Hyaluronic acid for hydration. Retinol for
+            cell turnover. Peptides for collagen. Caffeine and carnitine for adipocyte response.
+          </p>
+          <p>
+            The system thinks in protocols, not products — paired actives that compound
+            results over six sessions. The home-care line lets clients extend that work
+            between visits.
+          </p>
+          <a href="/shop/" class="btn-secondary" style="margin-top:14px;">Explore the Range →</a>
+        </div>
+        <div class="landing-pitch__image">
+          <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1000&q=85&auto=format&fit=crop" alt="Professional aesthetic treatment" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURED SYSTEMS ═══ -->
+  <section class="featured-systems section--black">
+    <div class="container">
+      <span class="text-label white">Professional Systems</span>
+      <h2 class="featured-systems__title">Complete Treatment Systems</h2>
+    </div>
+    <div class="systems-scroll">
+      <article class="system-card">
+        <div class="system-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80&auto=format&fit=crop" alt="CARBOSSICODE system" class="system-card__img" loading="lazy" />
+        </div>
+        <div class="system-card__body">
+          <span class="bubble-tag white">Body · 3 Steps</span>
+          <h3 class="system-card__name">CARBOSSICODE</h3>
+          <p class="system-card__desc">Needle-free carboxytherapy. Immediate centimetre loss.</p>
+          <a href="/shop/" class="btn-ghost-light">View in Shop →</a>
+        </div>
+      </article>
+      <article class="system-card">
+        <div class="system-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=800&q=80&auto=format&fit=crop" alt="CELL CODE system" class="system-card__img" loading="lazy" />
+        </div>
+        <div class="system-card__body">
+          <span class="bubble-tag white">Body · 5 Steps</span>
+          <h3 class="system-card__name">CELL CODE</h3>
+          <p class="system-card__desc">Anti-cellulite. Lipolysis + restructuring in one session.</p>
+          <a href="/shop/" class="btn-ghost-light">View in Shop →</a>
+        </div>
+      </article>
+      <article class="system-card">
+        <div class="system-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=800&q=80&auto=format&fit=crop" alt="Retinol Peeling system" class="system-card__img" loading="lazy" />
+        </div>
+        <div class="system-card__body">
+          <span class="bubble-tag white">Face · 5 Steps</span>
+          <h3 class="system-card__name">RETINOL PEELING</h3>
+          <p class="system-card__desc">5% Retinol professional peeling. Biorevitalisation.</p>
+          <a href="/shop/" class="btn-ghost-light">View in Shop →</a>
+        </div>
+      </article>
+      <article class="system-card">
+        <div class="system-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=800&q=80&auto=format&fit=crop" alt="LIFT CODE system" class="system-card__img" loading="lazy" />
+        </div>
+        <div class="system-card__body">
+          <span class="bubble-tag white">Body · 4 Steps</span>
+          <h3 class="system-card__name">LIFT CODE</h3>
+          <p class="system-card__desc">Immediate plumping. Lifting and firming.</p>
+          <a href="/shop/" class="btn-ghost-light">View in Shop →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ═══ CTA STRIP ═══ -->
+  <section class="landing-cta-strip">
+    <div class="container">
+      <h2>Shop home care online.</h2>
+      <p>Six retail-ready products available now for direct purchase across Benelux and the EU.</p>
+      <a href="/shop/" class="btn-primary">Enter the Shop →</a>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer style="background:var(--color-black);color:rgba(255,255,255,0.7);padding:64px 0 32px;">
+    <div class="container" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:48px;margin-bottom:48px;">
+      <div>
+        <a href="/" class="logo" style="margin-bottom:18px;">
+          <img src="/assets/images/hypodermical-bubbles-animated.svg" alt="" class="logo-mark" width="28" height="24" />
+          <span class="logo-text" style="color:var(--color-white);">hypodermical<span class="logo-dot">.</span></span>
+        </a>
+        <p style="font-size:13px;line-height:1.6;margin-top:14px;color:rgba(255,255,255,0.55);">Professional aesthetic systems built on 16 biological markers of ageing. Benelux distribution.</p>
+      </div>
+      <div>
+        <h4 style="color:var(--color-white);font-family:var(--font-primary);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:18px;">Shop</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;font-size:13px;">
+          <li><a href="/shop/" style="color:rgba(255,255,255,0.7);">All Products</a></li>
+          <li><a href="/shop/cart.html" style="color:rgba(255,255,255,0.7);">Cart</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:var(--color-white);font-family:var(--font-primary);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:18px;">Company</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;font-size:13px;">
+          <li><a href="/pages/method.html" style="color:rgba(255,255,255,0.7);">The Method</a></li>
+          <li><a href="/pages/professionals.html" style="color:rgba(255,255,255,0.7);">Professionals</a></li>
+          <li><a href="/pages/contact.html" style="color:rgba(255,255,255,0.7);">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:var(--color-white);font-family:var(--font-primary);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:18px;">Support</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;font-size:13px;">
+          <li><a href="/pages/shipping.html" style="color:rgba(255,255,255,0.7);">Shipping</a></li>
+          <li><a href="/pages/returns.html" style="color:rgba(255,255,255,0.7);">Returns</a></li>
+          <li><a href="/pages/terms.html" style="color:rgba(255,255,255,0.7);">Terms</a></li>
+          <li><a href="/pages/privacy.html" style="color:rgba(255,255,255,0.7);">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4);">
+      <span>© Hypodermical Benelux 2025</span>
+      <span>Made with care</span>
+    </div>
+  </footer>
+
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+  <script src="/shop/assets/js/cart.js" defer></script>
+</body>
+</html>
