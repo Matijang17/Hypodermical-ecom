@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — Hypodermical Benelux</title>
+  <meta name="description" content="Professional aesthetic treatment products and home care from Hypodermical. Based on 16 biological markers of ageing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Bodoni+Moda:ital,wght@0,700;1,400&family=Anton&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/header.css" />
+  <link rel="stylesheet" href="/assets/css/bubbles.css" />
+  <link rel="stylesheet" href="/shop/assets/css/shop.css" />
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="site-header header--transparent" id="site-header">
+    <div class="header-inner container">
+      <a href="/" class="logo" aria-label="Hypodermical home">
+        <img src="/assets/images/hypodermical-bubbles-animated.svg" alt="" class="logo-mark" width="28" height="24" />
+        <span class="logo-text">hypodermical<span class="logo-dot">.</span></span>
+      </a>
+
+      <nav class="header-nav" aria-label="Primary">
+        <a href="/pages/method.html" class="nav-link">The Method</a>
+        <a href="/pages/treatments.html" class="nav-link">Treatments</a>
+        <a href="/pages/professionals.html" class="nav-link">Professionals</a>
+        <a href="/shop/" class="nav-link nav-link--active" aria-current="page">Shop</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/shop/cart.html" class="header-cart-btn" aria-label="Shopping cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-badge" style="display:none" aria-live="polite">0</span>
+        </a>
+        <a href="/pages/contact.html" class="btn-header">Request a Demo</a>
+        <button class="header-nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ TRUST MARQUEE ═══ -->
+  <div class="trust-marquee" aria-label="Brand highlights">
+    <div class="trust-marquee__track">
+      <span>16 BIOLOGICAL MARKERS</span><span class="sep">◆</span>
+      <span>NEEDLE-FREE</span><span class="sep">◆</span>
+      <span>90+ PROTOCOLS</span><span class="sep">◆</span>
+      <span>100% NATURAL INGREDIENTS</span><span class="sep">◆</span>
+      <span>RESULTS FROM SESSION ONE</span><span class="sep">◆</span>
+      <span>PROFESSIONAL USE</span><span class="sep">◆</span>
+      <span>NO ANIMAL ORIGIN INGREDIENTS</span><span class="sep">◆</span>
+      <span aria-hidden="true">16 BIOLOGICAL MARKERS</span><span class="sep" aria-hidden="true">◆</span>
+      <span aria-hidden="true">NEEDLE-FREE</span><span class="sep" aria-hidden="true">◆</span>
+      <span aria-hidden="true">90+ PROTOCOLS</span><span class="sep" aria-hidden="true">◆</span>
+      <span aria-hidden="true">100% NATURAL INGREDIENTS</span><span class="sep" aria-hidden="true">◆</span>
+      <span aria-hidden="true">RESULTS FROM SESSION ONE</span><span class="sep" aria-hidden="true">◆</span>
+      <span aria-hidden="true">PROFESSIONAL USE</span><span class="sep" aria-hidden="true">◆</span>
+      <span aria-hidden="true">NO ANIMAL ORIGIN INGREDIENTS</span><span class="sep" aria-hidden="true">◆</span>
+    </div>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="shop-hero section--black">
+    <span class="bubble-float" style="width:400px;height:400px;top:-100px;right:-120px;border-color:rgba(255,255,255,0.06);" aria-hidden="true"></span>
+    <span class="bubble-float" style="width:200px;height:200px;bottom:60px;left:-60px;border-color:rgba(255,255,255,0.04);animation-delay:-3s;" aria-hidden="true"></span>
+
+    <div class="container shop-hero__inner">
+      <div class="shop-hero__text">
+        <span class="bubble-tag white">Professional Aesthetic Products</span>
+        <h1 class="shop-hero__title">
+          Shop<br>
+          <em>hypodermical<span class="hero-dot">.</span></em>
+        </h1>
+        <p class="shop-hero__sub">
+          Professional treatment systems and science-backed home care. Every product
+          works on the 16 biological markers of ageing.
+        </p>
+      </div>
+
+      <div class="shop-filter-bar" role="tablist" aria-label="Filter products by category">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Products</button>
+        <button class="filter-btn" data-filter="home-care" role="tab" aria-selected="false">Home Care</button>
+        <button class="filter-btn" data-filter="face" role="tab" aria-selected="false">Face</button>
+        <button class="filter-btn" data-filter="mesococktail" role="tab" aria-selected="false">Mesococktail</button>
+        <button class="filter-btn" data-filter="body" role="tab" aria-selected="false">Body</button>
+        <button class="filter-type-btn" data-type="retail" aria-label="Show retail only">Retail Only</button>
+        <button class="filter-type-btn" data-type="professional" aria-label="Show pro only">Pro Only</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SEARCH BAR ═══ -->
+  <div class="shop-search-bar section--white">
+    <div class="container">
+      <div class="search-wrap">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          type="search"
+          class="shop-search-input"
+          placeholder="Search by name, concern or ingredient…"
+          aria-label="Search products"
+          autocomplete="off"
+        />
+        <span class="search-result-count" aria-live="polite"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PRODUCT GRID ═══ -->
+  <main class="shop-main section--white" id="product-grid-section">
+    <div class="container">
+      <div class="product-grid" id="product-grid" role="list">
+        <div class="grid-loading" aria-live="polite">
+          <div class="loading-skeleton"></div>
+          <div class="loading-skeleton"></div>
+          <div class="loading-skeleton"></div>
+          <div class="loading-skeleton"></div>
+          <div class="loading-skeleton"></div>
+          <div class="loading-skeleton"></div>
+        </div>
+      </div>
+      <p class="no-results" id="no-results" style="display:none">
+        No products match your search.
+        <button class="link-btn" type="button" onclick="ShopFilter.reset()">Clear filters →</button>
+      </p>
+    </div>
+  </main>
+
+  <!-- ═══ FEATURED SYSTEMS ═══ -->
+  <section class="featured-systems section--black">
+    <div class="container">
+      <span class="text-label white">Professional Systems</span>
+      <h2 class="featured-systems__title">Complete Treatment Systems</h2>
+    </div>
+    <div class="systems-scroll">
+      <article class="system-card">
+        <div class="system-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80&auto=format&fit=crop" alt="CARBOSSICODE system" class="system-card__img" loading="lazy" />
+        </div>
+        <div class="system-card__body">
+          <span class="bubble-tag white">Body · 3 Steps</span>
+          <h3 class="system-card__name">CARBOSSICODE</h3>
+          <p class="system-card__desc">Needle-free carboxytherapy. Immediate centimetre loss.</p>
+          <a href="/shop/body/carbossicode.html" class="btn-ghost-light">View System →</a>
+        </div>
+      </article>
+      <article class="system-card">
+        <div class="system-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=800&q=80&auto=format&fit=crop" alt="CELL CODE system" class="system-card__img" loading="lazy" />
+        </div>
+        <div class="system-card__body">
+          <span class="bubble-tag white">Body · 5 Steps</span>
+          <h3 class="system-card__name">CELL CODE</h3>
+          <p class="system-card__desc">Anti-cellulite. Lipolysis + restructuring in one session.</p>
+          <a href="/shop/body/cell-code.html" class="btn-ghost-light">View System →</a>
+        </div>
+      </article>
+      <article class="system-card">
+        <div class="system-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=800&q=80&auto=format&fit=crop" alt="Retinol Peeling system" class="system-card__img" loading="lazy" />
+        </div>
+        <div class="system-card__body">
+          <span class="bubble-tag white">Face · 5 Steps</span>
+          <h3 class="system-card__name">RETINOL PEELING</h3>
+          <p class="system-card__desc">5% Retinol professional peeling. Biorevitalisation.</p>
+          <a href="/shop/face/retinol-peeling-skin-revival.html" class="btn-ghost-light">View System →</a>
+        </div>
+      </article>
+      <article class="system-card">
+        <div class="system-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=800&q=80&auto=format&fit=crop" alt="LIFT CODE system" class="system-card__img" loading="lazy" />
+        </div>
+        <div class="system-card__body">
+          <span class="bubble-tag white">Body · 4 Steps</span>
+          <h3 class="system-card__name">LIFT CODE</h3>
+          <p class="system-card__desc">Immediate plumping. Lifting and firming.</p>
+          <a href="/shop/body/lift-code.html" class="btn-ghost-light">View System →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ═══ HOME CARE SPOTLIGHT ═══ -->
+  <section class="homecare-spotlight section--grey">
+    <div class="container">
+      <div class="homecare-spotlight__header">
+        <span class="bubble-tag">Available Online</span>
+        <h2>Home Care — Shop Now</h2>
+        <p>The six products you can purchase directly today. Extend your professional treatment results at home.</p>
+      </div>
+      <div class="product-grid product-grid--4col" id="retail-spotlight"></div>
+      <div style="text-align:center;margin-top:48px;">
+        <a href="#product-grid-section" class="btn-secondary">View All Home Care →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer style="background:var(--color-black);color:rgba(255,255,255,0.7);padding:64px 0 32px;">
+    <div class="container" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:48px;margin-bottom:48px;">
+      <div>
+        <a href="/" class="logo" style="margin-bottom:18px;">
+          <img src="/assets/images/hypodermical-bubbles-animated.svg" alt="" class="logo-mark" width="28" height="24" />
+          <span class="logo-text" style="color:var(--color-white);">hypodermical<span class="logo-dot">.</span></span>
+        </a>
+        <p style="font-size:13px;line-height:1.6;margin-top:14px;color:rgba(255,255,255,0.55);">Professional aesthetic systems built on 16 biological markers of ageing. Benelux distribution.</p>
+      </div>
+      <div>
+        <h4 style="color:var(--color-white);font-family:var(--font-primary);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:18px;">Shop</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;font-size:13px;">
+          <li><a href="/shop/" style="color:rgba(255,255,255,0.7);">All Products</a></li>
+          <li><a href="/shop/?filter=home-care" style="color:rgba(255,255,255,0.7);">Home Care</a></li>
+          <li><a href="/shop/?filter=face" style="color:rgba(255,255,255,0.7);">Face</a></li>
+          <li><a href="/shop/?filter=body" style="color:rgba(255,255,255,0.7);">Body</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:var(--color-white);font-family:var(--font-primary);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:18px;">Company</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;font-size:13px;">
+          <li><a href="/pages/method.html" style="color:rgba(255,255,255,0.7);">The Method</a></li>
+          <li><a href="/pages/professionals.html" style="color:rgba(255,255,255,0.7);">Professionals</a></li>
+          <li><a href="/pages/contact.html" style="color:rgba(255,255,255,0.7);">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:var(--color-white);font-family:var(--font-primary);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:18px;">Support</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;font-size:13px;">
+          <li><a href="/pages/shipping.html" style="color:rgba(255,255,255,0.7);">Shipping</a></li>
+          <li><a href="/pages/returns.html" style="color:rgba(255,255,255,0.7);">Returns</a></li>
+          <li><a href="/pages/terms.html" style="color:rgba(255,255,255,0.7);">Terms</a></li>
+          <li><a href="/pages/privacy.html" style="color:rgba(255,255,255,0.7);">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4);">
+      <span>© Hypodermical Benelux 2025</span>
+      <span>Made with care</span>
+    </div>
+  </footer>
+
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+  <script src="/shop/assets/js/cart.js" defer></script>
+  <script src="/shop/assets/js/stripe-checkout.js" defer></script>
+  <script src="/shop/assets/js/shop-filter.js" defer></script>
+</body>
+</html>

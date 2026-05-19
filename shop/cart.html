@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart — Hypodermical Benelux</title>
+  <meta name="description" content="Your Hypodermical Benelux shopping cart." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Bodoni+Moda:ital,wght@0,700;1,400&family=Anton&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/header.css" />
+  <link rel="stylesheet" href="/assets/css/bubbles.css" />
+  <link rel="stylesheet" href="/shop/assets/css/shop.css" />
+</head>
+<body class="has-header-offset">
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner container">
+      <a href="/" class="logo" aria-label="Hypodermical home">
+        <img src="/assets/images/hypodermical-bubbles-animated.svg" alt="" class="logo-mark" width="28" height="24" />
+        <span class="logo-text">hypodermical<span class="logo-dot">.</span></span>
+      </a>
+
+      <nav class="header-nav" aria-label="Primary">
+        <a href="/pages/method.html" class="nav-link">The Method</a>
+        <a href="/pages/treatments.html" class="nav-link">Treatments</a>
+        <a href="/pages/professionals.html" class="nav-link">Professionals</a>
+        <a href="/shop/" class="nav-link">Shop</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/shop/cart.html" class="header-cart-btn" aria-label="Shopping cart" aria-current="page">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-badge" style="display:none" aria-live="polite">0</span>
+        </a>
+        <a href="/pages/contact.html" class="btn-header">Request a Demo</a>
+        <button class="header-nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ CART ═══ -->
+  <main class="cart-page">
+    <div class="container">
+      <div class="cart-page__header">
+        <span class="bubble-tag">Your Selection</span>
+        <h1>Shopping Cart</h1>
+        <p id="cart-item-count">0 items</p>
+      </div>
+
+      <div class="cart-layout" id="cart-layout" style="display:none">
+        <ul class="cart-items" id="cart-items"></ul>
+
+        <aside class="cart-summary" aria-label="Order summary">
+          <h2>Summary</h2>
+          <div class="cart-summary__row">
+            <span>Subtotal</span>
+            <span id="summary-subtotal">€0,00</span>
+          </div>
+          <div class="cart-summary__row">
+            <span>Shipping</span>
+            <span>Calculated at checkout</span>
+          </div>
+          <div class="cart-summary__row">
+            <span>VAT</span>
+            <span>Included</span>
+          </div>
+          <div class="cart-summary__row cart-summary__row--total">
+            <span>Total</span>
+            <span id="summary-total">€0,00</span>
+          </div>
+          <button class="btn-primary" data-checkout-btn id="checkout-btn">Checkout →</button>
+          <a href="/shop/" class="btn-secondary">Continue Shopping</a>
+          <p class="cart-summary__hint">
+            Secured by Stripe · Cards, iDEAL, Bancontact · Shipping across Benelux + EU
+          </p>
+        </aside>
+      </div>
+
+      <div class="cart-empty" id="cart-empty" style="display:none">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="margin:0 auto 24px;color:var(--color-grey);">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <h2>Your cart is empty</h2>
+        <p>Browse our home care collection or request access to our professional range.</p>
+        <a href="/shop/" class="btn-primary">Browse Shop →</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/shop/assets/js/cart.js" defer></script>
+  <script src="/shop/assets/js/stripe-checkout.js" defer></script>
+  <script>
+    /* ───────── Cart page renderer ───────── */
+    (function () {
+      function escapeHtml(str) {
+        if (str == null) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function render() {
+        const cart = HypoCart.get();
+        const empty = document.getElementById('cart-empty');
+        const layout = document.getElementById('cart-layout');
+        const list = document.getElementById('cart-items');
+        const count = document.getElementById('cart-item-count');
+        const subtotal = document.getElementById('summary-subtotal');
+        const total = document.getElementById('summary-total');
+
+        const itemCount = HypoCart.count();
+        count.textContent = itemCount + (itemCount === 1 ? ' item' : ' items');
+
+        if (cart.length === 0) {
+          empty.style.display = 'block';
+          layout.style.display = 'none';
+          return;
+        }
+
+        empty.style.display = 'none';
+        layout.style.display = 'grid';
+
+        list.innerHTML = cart.map(item => `
+          <li class="cart-item" data-sku="${escapeHtml(item.sku)}">
+            <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}" class="cart-item__img" loading="lazy" />
+            <div class="cart-item__details">
+              <span class="cart-item__name">${escapeHtml(item.name)}</span>
+              <span class="cart-item__size">${escapeHtml(item.size || '')}</span>
+              <div class="cart-item__qty-row">
+                <div class="cart-item__qty">
+                  <button type="button" data-qty-dec aria-label="Decrease quantity">−</button>
+                  <input type="number" min="1" max="99" value="${item.qty}" aria-label="Quantity" data-qty-input />
+                  <button type="button" data-qty-inc aria-label="Increase quantity">+</button>
+                </div>
+                <button type="button" class="cart-item__remove" data-remove>Remove</button>
+              </div>
+            </div>
+            <span class="cart-item__price">${HypoCart.formatPrice(item.price * item.qty)}</span>
+          </li>
+        `).join('');
+
+        const sub = HypoCart.total();
+        subtotal.textContent = HypoCart.formatPrice(sub);
+        total.textContent = HypoCart.formatPrice(sub);
+      }
+
+      document.addEventListener('DOMContentLoaded', render);
+      document.addEventListener('hypo:cart-updated', render);
+
+      // Event delegation for qty/remove
+      document.addEventListener('click', (e) => {
+        const li = e.target.closest('.cart-item');
+        if (!li) return;
+        const sku = li.dataset.sku;
+
+        if (e.target.matches('[data-qty-dec]')) {
+          const item = HypoCart.get().find(i => i.sku === sku);
+          if (item) HypoCart.setQty(sku, item.qty - 1);
+        } else if (e.target.matches('[data-qty-inc]')) {
+          const item = HypoCart.get().find(i => i.sku === sku);
+          if (item) HypoCart.setQty(sku, item.qty + 1);
+        } else if (e.target.matches('[data-remove]')) {
+          HypoCart.remove(sku);
+        }
+      });
+
+      document.addEventListener('change', (e) => {
+        if (e.target.matches('[data-qty-input]')) {
+          const li = e.target.closest('.cart-item');
+          HypoCart.setQty(li.dataset.sku, e.target.value);
+        }
+      });
+
+      // Checkout button
+      document.addEventListener('click', (e) => {
+        if (e.target.matches('[data-checkout-btn]')) {
+          e.preventDefault();
+          checkoutCart(HypoCart.get());
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

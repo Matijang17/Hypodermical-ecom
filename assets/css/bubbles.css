@@ -1,0 +1,163 @@
+/* ============================================================
+   Hypodermical — Bubble Component System
+   The only element that uses border-radius: 999px is .bubble-tag.
+   Decorative bubbles are perfect circles via aspect ratio 1:1.
+   ============================================================ */
+
+/* ----------- Bubble Tag (category / chip pill) ----------- */
+.bubble-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  font-family: var(--font-primary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-black);
+  background: var(--color-sand);
+  border-radius: 999px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.bubble-tag.white {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.bubble-tag.outline {
+  background: transparent;
+  border: 1px solid var(--color-black);
+}
+
+.bubble-tag.outline.white {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: var(--color-white);
+}
+
+/* ----------- Bubble Cluster (decorative grouping) ----------- */
+.bubble-cluster {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+
+.bubble-cluster .b {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--color-sand);
+  background: transparent;
+}
+
+/* ----------- Floating bubble (single decorative element) ----------- */
+.bubble-float {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  border: 1px solid var(--color-sand);
+  background: transparent;
+  pointer-events: none;
+  animation: bubble-drift 8s ease-in-out infinite;
+}
+
+.bubble-float.filled {
+  background: var(--color-sand);
+}
+
+@keyframes bubble-drift {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(8px, -12px); }
+}
+
+/* ----------- Bubble divider (section separator) ----------- */
+.bubble-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 0;
+  position: relative;
+}
+
+.bubble-divider::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.bubble-divider__circle {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-white);
+  border: 1px solid var(--color-sand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.bubble-divider__circle::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-sand);
+}
+
+/* On dark sections */
+.section--black .bubble-divider::before { background: rgba(255, 255, 255, 0.12); }
+.section--black .bubble-divider__circle { background: var(--color-black); border-color: rgba(255, 255, 255, 0.3); }
+.section--black .bubble-divider__circle::after { background: var(--color-sand); }
+
+/* ----------- Bubble border (corner ring decorations on sections) ----------- */
+.bubble-border {
+  position: relative;
+}
+
+.bubble-border::before,
+.bubble-border::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px solid var(--color-sand);
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.bubble-border::before {
+  top: 20px;
+  left: 20px;
+}
+
+.bubble-border::after {
+  bottom: 20px;
+  right: 20px;
+}
+
+/* ----------- Hover bubble for cards ----------- */
+.bubble-on-card {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.25s var(--ease-out);
+}
+
+.bubble-on-card:hover { transform: scale(1.1); }
