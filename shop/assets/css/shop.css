@@ -2033,3 +2033,31 @@
 }
 
 
+.bubbles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.bubble-float {
+    position: absolute;
+    border: 3px solid rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 
+        inset 0 0 25px rgba(255,255,255,0.3),
+        0 10px 30px rgba(255,255,255,0.1);
+    animation: float 25s infinite ease-in-out;
+    opacity: 0.75;
+}
+
+@keyframes float {
+    0%   { transform: translateY(0) rotate(0deg); }
+    50%  { transform: translateY(-35px) rotate(8deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
