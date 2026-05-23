@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Product — Hypodermical Benelux</title>
-  <meta name="description" content="Hypodermical Benelux — Professional aesthetic product detail." />
+  <title>Anti-Couperose Face — Hypodermical Benelux</title>
+  <meta name="description" content="Anti-Couperose Face — innovative mesotherapy that strengthens blood vessel walls, reduces capillary fragility and redness from the first session." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Bodoni+Moda:ital,wght@0,700;1,400&family=Anton&display=swap" rel="stylesheet" />
@@ -13,9 +13,8 @@
   <link rel="stylesheet" href="/assets/css/bubbles.css" />
   <link rel="stylesheet" href="/shop/assets/css/shop.css" />
 </head>
-<body class="has-header-offset">
-
-  <header class="site-header" id="site-header">
+<body>
+  <header class="site-header header--transparent" id="site-header">
     <div class="header-inner container">
       <a href="/" class="logo" aria-label="Hypodermical home">
         <img src="/assets/images/hypodermical-bubbles-animated.svg" alt="" class="logo-mark" width="28" height="24" />
@@ -25,7 +24,7 @@
         <a href="/pages/method.html" class="nav-link">The Method</a>
         <a href="/pages/treatments.html" class="nav-link">Treatments</a>
         <a href="/pages/professionals.html" class="nav-link">Professionals</a>
-        <a href="/shop/" class="nav-link">Shop</a>
+        <a href="/shop/" class="nav-link nav-link--active" aria-current="page">Shop</a>
       </nav>
       <div class="header-actions">
         <a href="/shop/cart.html" class="header-cart-btn" aria-label="Shopping cart">
@@ -44,26 +43,35 @@
     </div>
   </header>
 
-  <main class="product-page">
+  <section class="collection-hero section--black" id="collection-hero"></section>
+  <section class="collection-overview section--white" id="collection-overview"></section>
+  <main class="collection-main" id="collection-grid-section">
     <div class="container">
-      <div id="product-root">
-        <p class="product-loading">Loading product…</p>
-      </div>
+      <div class="collection-grid product-grid" id="collection-grid" role="list"></div>
     </div>
   </main>
+  <section class="collection-description section--grey" id="collection-description"></section>
 
-  <template id="tpl-error">
-    <div class="product-error">
-      <span class="bubble-tag">Not Found</span>
-      <h1>Product not found</h1>
-      <p>We couldn't find that product. It may have been moved or the URL is incorrect.</p>
-      <a href="/shop/" class="btn-primary">Back to Shop →</a>
-    </div>
-  </template>
+  <script>
+    window.HYPO_COLLECTION_CONFIG = {
+      systemSku: 'HY-AC-F-001',
+      tagline: 'Capillaries / Rosacea — Face Protocol',
+      title: 'Anti-Couperose',
+      titleItalic: 'Face Treatment',
+      description: 'Innovative mesotherapy that strengthens blood vessel walls, reduces capillary fragility, redness and existing imperfections. Visible improvement after the first session.',
+      descriptionTitle: 'The nine-step Anti-Couperose protocol',
+      descriptionLong: 'Anti-Couperose Hypodermical administers components that strengthen and tighten the walls of blood vessels, improving capillary fragility and reducing redness. Visible improvement in skin colour can be observed immediately after the first session.\n\nProtocol applicable on both face and body (especially legs). Combines specialised cleansers, an antioxidant scrub, a mesococktail and angiostatic concentrates with daily home reinforcement.',
+      protocol: {
+        sessions: '6 per cycle',
+        frequency: 'Every 10 days (Dermapen) / Weekly (manual)',
+        duration: '30–45 min',
+        proOnly: true
+      }
+    };
+  </script>
 
   <script src="/assets/js/header.js" defer></script>
   <script src="/shop/assets/js/cart.js" defer></script>
-  <script src="/shop/assets/js/stripe-checkout.js" defer></script>
-  <script src="/shop/assets/js/product-detail.js" defer></script>
+  <script src="/shop/assets/js/collection-page.js" defer></script>
 </body>
 </html>

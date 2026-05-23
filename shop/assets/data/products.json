@@ -685,9 +685,12 @@
       { "name": "Calendula Oil", "action": "Soothing, regenerating." }
     ],
     "key_benefits": ["Chemical + mechanical exfoliation", "Activates cell metabolism", "Prepares skin for active treatment", "Non-abrasive jojoba nanogranules"],
-    "belongs_to_systems": [{ "sku": "HY-EYE-001", "name": "iLLUMiNEYE Eye Treatment System (Step 2 — manual)" }],
+    "belongs_to_systems": [
+      { "sku": "HY-EYE-001", "name": "iLLUMiNEYE Eye Treatment System (Step 2 — manual)" },
+      { "sku": "HY-HBT-COLLECTION", "name": "Home Body Treatments (Step 1)" }
+    ],
     "indications": ["All skin types", "Pre-treatment prep", "Weekly maintenance"],
-    "tags": ["exfoliant", "glycolic", "home-care"]
+    "tags": ["exfoliant", "glycolic", "home-care", "home-body"]
   },
 
   {
@@ -1232,5 +1235,108 @@
     "key_benefits": ["Light gel-cream texture", "Soothing + refreshing", "Daily oxygen boost"],
     "belongs_to_systems": [{ "sku": "HY-CO2-F-001", "name": "CarbO2xy Face" }],
     "tags": ["gel-cream", "oxygen", "soothing", "home-care"]
+  },
+
+  {
+    "id": "hypo-anti-cellulite",
+    "sku": "HY-HC-CELL-001",
+    "slug": "hypo-anti-cellulite-gel",
+    "name": "Hypo Anti-Cellulite",
+    "short_name": "Hypo Anti-Cellulite",
+    "category": "body",
+    "subcategory": "Home Body Treatments",
+    "type": "Anti-Cellulite Gel",
+    "size": "200 ml",
+    "protocol_step": "Step 2 — Home Body Treatments",
+    "price": 4900,
+    "currency": "eur",
+    "professional_use_only": false,
+    "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=900&q=85&auto=format&fit=crop",
+    "short_description": "Anti-cellulite gel that improves blood circulation and cellular metabolism, eliminates inflammation and structural alterations in the subcutaneous fat layer.",
+    "full_description": "Anti-cellulite gel that improves blood circulation and cellular metabolism, eliminates inflammation and structural alterations in the subcutaneous fat layer, improving microcirculation and lymphatic drainage.",
+    "key_benefits": [
+      "Improves blood circulation",
+      "Activates cellular metabolism",
+      "Eliminates inflammation in subcutaneous fat",
+      "Improves microcirculation and lymphatic drainage"
+    ],
+    "instructions": [
+      "Apply massaging until completely absorbed.",
+      "Use at least once a day on non-salon days.",
+      "Used in protocol: Water Retention Home Care (Step 2, morning/evening)."
+    ],
+    "indications": ["Cellulite", "Water retention", "Poor microcirculation", "Lymphatic congestion"],
+    "belongs_to_systems": [{ "sku": "HY-HBT-COLLECTION", "name": "Home Body Treatments (Step 2)" }],
+    "tags": ["anti-cellulite", "body", "home-care", "home-body", "lipolytic"]
+  },
+
+  {
+    "id": "lipoconcentrated-serum-phialoid",
+    "sku": "HY-HC-LIPO-001",
+    "slug": "lipoconcentrated-serum-phialoid",
+    "name": "Lipoconcentrated Serum Phialoid Active",
+    "short_name": "Lipo Serum Phialoid",
+    "category": "body",
+    "subcategory": "Home Body Treatments",
+    "type": "Single-dose Phial Serum",
+    "size": "10 × 2 ml phials",
+    "protocol_step": "Step 3 — Home Body Treatments (optional)",
+    "price": 6500,
+    "currency": "eur",
+    "professional_use_only": false,
+    "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=900&q=85&auto=format&fit=crop",
+    "short_description": "Lipoconcentrated serum phialoid active against cellulite. Composition activates a powerful and targeted lipolytic action.",
+    "full_description": "Lipoconcentrated serum phialoid active against cellulite. Composition activates a powerful and targeted lipolytic action. Available individually or as part of the Anti-Cellulite Home Kit. Synergistic with Hypo Anti-Cellulite Gel.",
+    "key_benefits": [
+      "Powerful and targeted lipolytic action",
+      "Single-dose phials for hygienic application",
+      "Maximum concentration of active ingredients",
+      "Synergistic with Hypo Anti-Cellulite Gel"
+    ],
+    "instructions": [
+      "Once a day (except on salon treatment days), apply 1 drop to each critical area.",
+      "Massage until completely absorbed.",
+      "Used in protocol: Water Retention Home Care (Step 3 — optional, morning/evening)."
+    ],
+    "indications": ["Cellulite", "Localised adiposity", "Critical areas"],
+    "belongs_to_systems": [{ "sku": "HY-HBT-COLLECTION", "name": "Home Body Treatments (Step 3)" }],
+    "tags": ["anti-cellulite", "lipolytic", "phials", "body", "home-care", "home-body"]
+  },
+
+  {
+    "id": "hypo-anti-stretch",
+    "sku": "HY-HC-STR-001",
+    "slug": "hypo-anti-stretch-marks-cream",
+    "name": "Hypo Anti-Stretch",
+    "short_name": "Hypo Anti-Stretch",
+    "category": "body",
+    "subcategory": "Home Body Treatments",
+    "type": "Anti-Stretch Marks Cream",
+    "size": "150 ml",
+    "protocol_step": "Step 4 — Home Body Treatments / Stretch Marks Home Care",
+    "price": 5200,
+    "currency": "eur",
+    "professional_use_only": false,
+    "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
+    "image": "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=900&q=85&auto=format&fit=crop",
+    "short_description": "Intensive regenerating cream that combats stretch marks. Eliminates the most recent ones and effectively minimises those that have already healed.",
+    "full_description": "Intensive regenerating cream that combats stretch marks. Eliminates the most recent ones and effectively minimises those that have already healed. Acts on the deepest layers of the skin, restoring elasticity and strengthening the tissues.",
+    "key_benefits": [
+      "Eliminates new (red) stretch marks",
+      "Minimises healed (white) stretch marks",
+      "Acts on deepest skin layers",
+      "Restores elasticity",
+      "Strengthens tissue"
+    ],
+    "instructions": [
+      "Apply massaging until completely absorbed into the scar areas.",
+      "Use at least once a day.",
+      "Used in protocol: Stretch Marks Home Care (Step 1, morning/evening after Glyco Exfoliating)."
+    ],
+    "indications": ["Stretch marks (red and white)", "Loss of skin elasticity", "Tissue regeneration"],
+    "belongs_to_systems": [{ "sku": "HY-HBT-COLLECTION", "name": "Home Body Treatments (Step 4) / Stretch Marks Home Care" }],
+    "tags": ["anti-stretch", "regenerating", "elasticity", "body", "home-care", "home-body"]
   }
 ]
