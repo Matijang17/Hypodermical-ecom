@@ -56,8 +56,8 @@
 .bubble-float {
   position: absolute;
   display: block;
-  border-radius: 50%;
-  border: 1px solid var(--color-sand);
+  border-radius: 45%;
+  border: 0px solid var(--color-sand);
   background: transparent;
   pointer-events: none;
   animation: bubble-drift 8s ease-in-out infinite;
