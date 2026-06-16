@@ -1355,7 +1355,7 @@
     "currency": "eur",
     "professional_use_only": false,
     "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
-    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/sun-veil-30.webp",
     "short_description": "A gentle SPF 30 sun emulsion with a light, fast-absorbing texture. Moisturising, nourishing and antioxidant for an even, natural tan. Daily protection for face and body.",
     "full_description": "A gentle sun emulsion with SPF 30, featuring a light texture that is quickly absorbed. Thanks to its valuable active ingredients it has a moisturising, nourishing and antioxidant effect, ensuring an even and natural tan. Part of the Hypo Sun System 2026, it doesn't just protect — it preserves the work you've done on your skin and the results you've achieved throughout the year, even during the period of maximum sun exposure.",
     "active_ingredients": [
@@ -1397,7 +1397,7 @@
     "currency": "eur",
     "professional_use_only": false,
     "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
-    "image": "https://images.unsplash.com/photo-1532413992378-f169ac26fff0?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/sun-shield-50.webp",
     "short_description": "A gentle SPF 50 sun emulsion with a light, fast-absorbing texture. Maximum protection for face and body during prolonged exposure to the strongest sun. For all fair and delicate skin types.",
     "full_description": "A gentle sun emulsion with SPF 50, featuring a light texture that is quickly absorbed. Thanks to its valuable active ingredients it has a moisturising, nourishing and antioxidant effect, ensuring an even and natural tan. Sun Shield 50 delivers maximum protection for the face and body during prolonged exposure to the strongest sun and is ideal for all fair and delicate skin types. Part of the Hypo Sun System 2026, it protects your skin without compromise while preserving the results of your treatments.",
     "active_ingredients": [
@@ -1438,7 +1438,7 @@
     "currency": "eur",
     "professional_use_only": false,
     "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
-    "image": "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/sun-recovery.webp",
     "short_description": "A soft, refreshing repairing gel that nourishes, moisturises and soothes the skin without leaving it greasy. The product that saves your holiday and your tan from sunburn and dark spots.",
     "full_description": "A soft, pleasantly refreshing gel that nourishes, moisturises and soothes the skin without leaving it feeling greasy. Its active ingredients calm skin irritation and help maintain your tan. Sun Recovery is the must-have after-sun for sunburn and redness — the product that saves your holiday and your tan from sunburn and dark spots, restoring the results of your treatments.",
     "active_ingredients": [
@@ -1480,7 +1480,7 @@
     "currency": "eur",
     "professional_use_only": false,
     "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
-    "image": "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/sun-balance.webp",
     "short_description": "A daily after-sun emulsion that maintains proper hydration and helps you keep an even tan and healthy skin. Contains NMF and Aloe Vera for a powerful soothing, calming and nourishing effect.",
     "full_description": "An after-sun emulsion formulated with natural active ingredients renowned for their proven moisturising and nourishing properties. It protects the skin, restoring its elasticity and softness and leaving the whole body feeling revitalised, refreshed and invigorated. It contains NMF and Aloe Vera for a powerful soothing, calming and nourishing effect. Daily moisturising is essential for a perfect, long-lasting tan and to keep your skin healthy after prolonged exposure to the sun.",
     "active_ingredients": [
@@ -1522,7 +1522,7 @@
     "currency": "eur",
     "professional_use_only": false,
     "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
-    "image": "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/sun-glow.webp",
     "short_description": "A radiance-boosting after-sun that brightens the skin and enhances your tan with subtle golden highlights — the “glow” effect everyone wants. Silky, emollient and protective.",
     "full_description": "A soft emulsion that brightens the skin, enhancing your tan with subtle golden highlights. With a silky, emollient texture, it protects, moisturises and soothes from the very first application thanks to the synergy of its active ingredients — precious coconut and argan oils, functional panthenol, antioxidant vitamin E and toning horsetail extract. The product restores elasticity and freshness, helping to prevent skin ageing. The must-have illuminating after-sun to give your tan the glow it deserves.",
     "active_ingredients": [
