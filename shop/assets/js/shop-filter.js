@@ -67,7 +67,11 @@ const ShopFilter = (() => {
 
   function filterProducts() {
     return allProducts.filter(p => {
-      if (state.category !== 'all' && p.category !== state.category) return false;
+      if (state.category === 'sun-care') {
+        if ((p.subcategory || '').toLowerCase() !== 'sun care') return false;
+      } else if (state.category !== 'all' && p.category !== state.category) {
+        return false;
+      }
       if (state.type === 'retail' && p.professional_use_only) return false;
       if (state.type === 'professional' && !p.professional_use_only) return false;
       if (state.query) {
