@@ -106,7 +106,7 @@
     "currency": "eur",
     "professional_use_only": true,
     "stripe_price_id": null,
-    "image": "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/hy-age-3layer-oxygen-mesopeeling-anti-age.webp",
     "short_description": "Rejuvenating oxygen mesopeeling with immediate Botox-like effect. Corrects expression and static wrinkles, sagging skin, discolouration and redefines facial oval.",
     "full_description": "Rejuvenating oxygen mesopeeling with biorevitalising, lifting and deep oxygenating effect. Corrects all types of skin ageing: expression and static wrinkles, sagging skin, discolouration, and redefines the oval of the face. The three-layer formula transports active ingredients deep into the skin non-invasively using Perfluorodecalin — a nano-dispersed transdermal oxygen drone. Does not cause intense flaking. No alpha hydroxy acids — usable all year round.",
     "layers": [
@@ -149,7 +149,7 @@
     "currency": "eur",
     "professional_use_only": true,
     "stripe_price_id": null,
-    "image": "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/hy-acne-3layer-oxygen-mesopeeling-anti-acne.webp",
     "short_description": "Oxygen mesopeeling for impure skin. Sebum-regulating, antibacterial, keratolytic and depigmenting. Antimicrobial and antifungal protection.",
     "full_description": "Oxygen mesopeeling with sebum-regulating function, antibacterial, keratolytic and depigmenting properties. Acts on acne blemishes by breaking down sebum deposits and impurities, regulating and inhibiting sebum hypersecretion. Provides antimicrobial and antifungal protection, reduces pores and hyperkeratosis.",
     "active_ingredients": [
@@ -191,7 +191,7 @@
     "currency": "eur",
     "professional_use_only": true,
     "stripe_price_id": null,
-    "image": "https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/hy-spots-3layer-oxygen-mesopeeling-anti-spots.webp",
     "short_description": "Depigmenting oxygen mesopeeling against spots and discolouration. Regulates melanin production by blocking tyrosinase activity.",
     "full_description": "Depigmenting oxygen mesopeeling that regulates melanin production by interfering with synthesis processes and blocking the activity of the tyrosinase enzyme. Reduces the number of proteins involved in the formation of pigmentation and activates autophagy in melanin metabolism in keratinocytes.",
     "active_ingredients": [
@@ -819,7 +819,7 @@
     "currency": "eur",
     "professional_use_only": false,
     "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
-    "image": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/sun-defense-spf50.webp",
     "short_description": "Photoprotective antioxidant moisturizer with broad-spectrum SPF50. Essential post-treatment and daily protection.",
     "active_ingredients": [
       { "name": "Ethylhexyl Methoxycinnamate", "action": "UVB filter." },
