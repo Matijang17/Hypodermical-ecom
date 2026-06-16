@@ -12,6 +12,16 @@
   padding-top: calc(var(--header-height) + 80px);
   padding-bottom: 80px;
   overflow: hidden;
+  background-image:
+    linear-gradient(95deg,
+      var(--color-black) 26%,
+      rgba(8, 8, 8, 0.82) 52%,
+      rgba(8, 8, 8, 0.5) 78%,
+      rgba(8, 8, 8, 0.38) 100%),
+    url("/assets/images/shop-hero-model.webp");
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, cover;
+  background-position: center, right center;
 }
 
 .shop-hero__inner {
@@ -703,6 +713,13 @@
   .shop-hero {
     padding-top: calc(var(--header-height) + 56px);
     padding-bottom: 56px;
+    background-image:
+      linear-gradient(180deg,
+        rgba(8, 8, 8, 0.86) 0%,
+        rgba(8, 8, 8, 0.7) 55%,
+        rgba(8, 8, 8, 0.78) 100%),
+      url("/assets/images/shop-hero-model.webp");
+    background-position: center, center top;
   }
 
   .shop-search-bar { padding: 18px 0; }
