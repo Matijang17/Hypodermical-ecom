@@ -18,7 +18,8 @@
     'HY-CO2-F-001':       { slug: 'carbo2xy-face',     category: 'face', label: 'CarbO2xy Face' },
     'HY-RP-SR-001':       { slug: 'retinol-peeling',   category: 'face', label: 'Retinol Peeling' },
     'HY-RP-SA-001':       { slug: 'retinol-peeling',   category: 'face', label: 'Retinol Peeling' },
-    'HY-HBT-COLLECTION':  { slug: 'body',              category: 'home-care', label: 'Home Body Treatments' }
+    'HY-HBT-COLLECTION':  { slug: 'body',              category: 'home-care', label: 'Home Body Treatments' },
+    'HY-SUN-SYSTEM':      { slug: 'sun-system',        category: 'home-care', label: 'Hypo Sun System' }
   };
 
   /* Biological-marker badge counts, looked up by parent-system SKU.

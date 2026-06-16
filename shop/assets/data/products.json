@@ -1338,5 +1338,214 @@
     "indications": ["Stretch marks (red and white)", "Loss of skin elasticity", "Tissue regeneration"],
     "belongs_to_systems": [{ "sku": "HY-HBT-COLLECTION", "name": "Home Body Treatments (Step 4) / Stretch Marks Home Care" }],
     "tags": ["anti-stretch", "regenerating", "elasticity", "body", "home-care", "home-body"]
+  },
+
+  {
+    "id": "sun-veil-30",
+    "sku": "HY-SUN-VEIL30-001",
+    "slug": "sun-veil-30",
+    "name": "Sun Veil 30 — Protective Moisturizer Sunscreen",
+    "short_name": "Sun Veil 30",
+    "category": "home-care",
+    "subcategory": "Sun Care",
+    "type": "Protective Moisturizer Sunscreen",
+    "size": "150 ml",
+    "concentration": "SPF 30",
+    "price": 2900,
+    "currency": "eur",
+    "professional_use_only": false,
+    "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=900&q=85&auto=format&fit=crop",
+    "short_description": "A gentle SPF 30 sun emulsion with a light, fast-absorbing texture. Moisturising, nourishing and antioxidant for an even, natural tan. Daily protection for face and body.",
+    "full_description": "A gentle sun emulsion with SPF 30, featuring a light texture that is quickly absorbed. Thanks to its valuable active ingredients it has a moisturising, nourishing and antioxidant effect, ensuring an even and natural tan. Part of the Hypo Sun System 2026, it doesn't just protect — it preserves the work you've done on your skin and the results you've achieved throughout the year, even during the period of maximum sun exposure.",
+    "active_ingredients": [
+      { "name": "Lactobacillus Ferments (Lactobacillus ferment)", "action": "Guardian of the microbiome — helps prevent irritation. Balanced skin does not burn as easily." },
+      { "name": "Vitamin B3 (Niacinamide)", "action": "Blocks the disorderly transfer of melanin to the surface, helping prevent dark spots, and strengthens the skin barrier that heat tends to break down." },
+      { "name": "Maritime Pine Extract (Pinus pinaster bark extract)", "action": "One of the most powerful antioxidants — combats free radicals from infrared rays and protects collagen." },
+      { "name": "Vitamin E (Tocopheryl acetate)", "action": "Membrane repairer — prevents cells from suffering structural damage." }
+    ],
+    "key_benefits": [
+      "Daily SPF 30 protection for face and body",
+      "Light texture, quickly absorbed",
+      "Moisturising and nourishing",
+      "Antioxidant defence against free radicals",
+      "Helps prevent dark spots",
+      "Supports an even, natural tan"
+    ],
+    "indications": ["Daily sun protection", "Face and body", "All skin types", "Tan maintenance"],
+    "instructions": [
+      "Apply the product evenly before sun exposure.",
+      "Reapply frequently and generously, especially after swimming."
+    ],
+    "ingredients": "Aqua, Diisopropyl adipate, C12-15 alkyl benzoate, Ethylhexyl salicylate, Butyloctyl salicylate, Diethylamino hydroxybenzoyl hexyl benzoate, Phenylbenzimidazole sulfonic acid, Lactobacillus ferment, Bis-ethylhexyloxyphenol methoxyphenyl triazine, Ethylhexyl triazone, Polyglyceryl-6 stearate, VP/eicosene copolymer, Potassium cetyl phosphate, Glycerin, Niacinamide, Methyl glucose sesquistearate, Aminomethyl propanol, Ethylhexylglycerin, Hydroxyacetophenone, Polyglyceryl-6 behenate, Tocopheryl acetate, Pinus pinaster bark extract, Sodium gluconate, o-Cymen-5-ol, Diglycerin.",
+    "belongs_to_systems": [{ "sku": "HY-SUN-SYSTEM", "name": "Hypo Sun System 2026" }],
+    "tags": ["sun", "sunscreen", "spf30", "spf", "sun-care", "face", "body", "summer", "antioxidant", "home-care", "retail"]
+  },
+
+  {
+    "id": "sun-shield-50",
+    "sku": "HY-SUN-SHIELD50-001",
+    "slug": "sun-shield-50",
+    "name": "Sun Shield 50 — Protective Moisturizer Sunscreen",
+    "short_name": "Sun Shield 50",
+    "category": "home-care",
+    "subcategory": "Sun Care",
+    "type": "Protective Moisturizer Sunscreen",
+    "size": "150 ml",
+    "concentration": "SPF 50",
+    "price": 3400,
+    "currency": "eur",
+    "professional_use_only": false,
+    "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
+    "image": "https://images.unsplash.com/photo-1532413992378-f169ac26fff0?w=900&q=85&auto=format&fit=crop",
+    "short_description": "A gentle SPF 50 sun emulsion with a light, fast-absorbing texture. Maximum protection for face and body during prolonged exposure to the strongest sun. For all fair and delicate skin types.",
+    "full_description": "A gentle sun emulsion with SPF 50, featuring a light texture that is quickly absorbed. Thanks to its valuable active ingredients it has a moisturising, nourishing and antioxidant effect, ensuring an even and natural tan. Sun Shield 50 delivers maximum protection for the face and body during prolonged exposure to the strongest sun and is ideal for all fair and delicate skin types. Part of the Hypo Sun System 2026, it protects your skin without compromise while preserving the results of your treatments.",
+    "active_ingredients": [
+      { "name": "Lactobacillus Ferments (Lactobacillus ferment)", "action": "Guardian of the microbiome — helps prevent irritation. Balanced skin does not burn as easily." },
+      { "name": "Vitamin B3 (Niacinamide)", "action": "Blocks the disorderly transfer of melanin to the surface, helping prevent dark spots, and strengthens the skin barrier that heat tends to break down." },
+      { "name": "Maritime Pine Extract (Pinus pinaster bark extract)", "action": "One of the most powerful antioxidants — combats free radicals from infrared rays and protects collagen." },
+      { "name": "Vitamin E (Tocopheryl acetate)", "action": "Membrane repairer — prevents cells from suffering structural damage." }
+    ],
+    "key_benefits": [
+      "Maximum SPF 50 protection for face and body",
+      "Ideal for fair and delicate skin",
+      "Light texture, quickly absorbed",
+      "Moisturising and nourishing",
+      "Antioxidant defence against free radicals",
+      "Helps prevent dark spots"
+    ],
+    "indications": ["High sun protection", "Prolonged / strong sun exposure", "Fair and delicate skin", "Face and body"],
+    "instructions": [
+      "Apply the product evenly before sun exposure.",
+      "Reapply frequently and generously, especially after swimming."
+    ],
+    "ingredients": "Aqua, C12-15 alkyl benzoate, Diethylamino hydroxybenzoyl hexyl benzoate, Butyloctyl salicylate, Ethylhexyl salicylate, Ethylhexyl triazone, Bis-ethylhexyloxyphenol methoxyphenyl triazine, Phenylbenzimidazole sulfonic acid, Lactobacillus ferment, Polyglyceryl-6 stearate, VP/eicosene copolymer, Methyl glucose sesquistearate, Potassium cetyl phosphate, Glycerin, Niacinamide, Aminomethyl propanol, Hydroxyacetophenone, Ethylhexylglycerin, Polyglyceryl-6 behenate, Tocopheryl acetate, Pinus pinaster bark extract, Sodium gluconate, o-Cymen-5-ol, Diglycerin.",
+    "belongs_to_systems": [{ "sku": "HY-SUN-SYSTEM", "name": "Hypo Sun System 2026" }],
+    "tags": ["sun", "sunscreen", "spf50", "spf", "sun-care", "face", "body", "summer", "high-protection", "antioxidant", "home-care", "retail"]
+  },
+
+  {
+    "id": "sun-recovery",
+    "sku": "HY-SUN-REC-001",
+    "slug": "sun-recovery",
+    "name": "Sun Recovery — Repairing After-Sun Lotion",
+    "short_name": "Sun Recovery",
+    "category": "home-care",
+    "subcategory": "Sun Care",
+    "type": "Repairing After-Sun Lotion",
+    "size": "200 ml",
+    "price": 2700,
+    "currency": "eur",
+    "professional_use_only": false,
+    "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
+    "image": "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=900&q=85&auto=format&fit=crop",
+    "short_description": "A soft, refreshing repairing gel that nourishes, moisturises and soothes the skin without leaving it greasy. The product that saves your holiday and your tan from sunburn and dark spots.",
+    "full_description": "A soft, pleasantly refreshing gel that nourishes, moisturises and soothes the skin without leaving it feeling greasy. Its active ingredients calm skin irritation and help maintain your tan. Sun Recovery is the must-have after-sun for sunburn and redness — the product that saves your holiday and your tan from sunburn and dark spots, restoring the results of your treatments.",
+    "active_ingredients": [
+      { "name": "Aloe Vera (Aloe Barbadensis Leaf Juice)", "action": "Soothing and moisturising; calms irritation." },
+      { "name": "Panthenol", "action": "Healing and moisturising; supports skin recovery." },
+      { "name": "Glycosaminoglycans (Sodium chondroitin sulphate, Pentylene glycol)", "action": "Replenishes the intercellular matrix and supports hydration." },
+      { "name": "Ginkgo Biloba Extract (Ginkgo Biloba Leaf Extract)", "action": "Antioxidant and microcirculation support." },
+      { "name": "Calendula Extract (Calendula Officinalis Flower Extract)", "action": "Soothing and regenerating for irritated skin." },
+      { "name": "St. John's Wort Extract (Hypericum Perforatum Flower/Leaf/Stem Extract)", "action": "Calming and reparative." }
+    ],
+    "key_benefits": [
+      "Soothes sunburn and redness",
+      "Nourishes and moisturises without greasiness",
+      "Calms skin irritation",
+      "Helps maintain your tan",
+      "Helps protect against dark spots"
+    ],
+    "indications": ["Sunburn", "Redness", "Irritated skin", "After-sun recovery", "Face and body"],
+    "instructions": [
+      "Apply generously all over the body after each exposure.",
+      "Pay particular attention to the most irritated areas of skin."
+    ],
+    "ingredients": "Aqua, Aloe Barbadensis Leaf Juice, Glycerin, Hydroxyethyl Acrylate/Sodium Acryloyldimethyl Taurate Copolymer, Panthenol, Squalane, Calendula Officinalis Flower Extract, Hypericum Perforatum Flower/Leaf/Stem Extract, Ginkgo Biloba Leaf Extract, Sodium Chondroitin Sulfate, Pentylene Glycol, Polysorbate 60, Sorbitan Isostearate, Parfum, Sodium Benzoate, Potassium Sorbate, Phenoxyethanol, Ethylhexylglycerin, Tetrasodium Glutamate Diacetate.",
+    "belongs_to_systems": [{ "sku": "HY-SUN-SYSTEM", "name": "Hypo Sun System 2026" }],
+    "tags": ["after-sun", "aftersun", "repairing", "sunburn", "soothing", "sun-care", "face", "body", "summer", "home-care", "retail"]
+  },
+
+  {
+    "id": "sun-balance",
+    "sku": "HY-SUN-BAL-001",
+    "slug": "sun-balance",
+    "name": "Sun Balance — Moisturizer After-Sun Lotion",
+    "short_name": "Sun Balance",
+    "category": "home-care",
+    "subcategory": "Sun Care",
+    "type": "Moisturizer After-Sun Lotion",
+    "size": "200 ml",
+    "price": 2500,
+    "currency": "eur",
+    "professional_use_only": false,
+    "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
+    "image": "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=900&q=85&auto=format&fit=crop",
+    "short_description": "A daily after-sun emulsion that maintains proper hydration and helps you keep an even tan and healthy skin. Contains NMF and Aloe Vera for a powerful soothing, calming and nourishing effect.",
+    "full_description": "An after-sun emulsion formulated with natural active ingredients renowned for their proven moisturising and nourishing properties. It protects the skin, restoring its elasticity and softness and leaving the whole body feeling revitalised, refreshed and invigorated. It contains NMF and Aloe Vera for a powerful soothing, calming and nourishing effect. Daily moisturising is essential for a perfect, long-lasting tan and to keep your skin healthy after prolonged exposure to the sun.",
+    "active_ingredients": [
+      { "name": "Reconstituted NMF Moisturising Factor (Glucose, Sorbitol, Sodium glutamate, Urea, Sodium PCA, Glycine, Lactic acid, Hydrolysed wheat protein, Panthenol)", "action": "Restores the skin's natural moisturising factor for lasting hydration." },
+      { "name": "Aloe Vera (Aloe Barbadensis Leaf Juice)", "action": "Soothing, calming and nourishing." },
+      { "name": "Shea Butter (Butyrospermum parkii butter)", "action": "Nourishing and emollient; restores softness." },
+      { "name": "Sweet Almond Oil (Prunus Amygdalus Dulcis Oil)", "action": "Replenishes lipids and improves elasticity." },
+      { "name": "Vitamin E (Tocopheryl Acetate)", "action": "Antioxidant protection." },
+      { "name": "Panthenol", "action": "Moisturising and soothing." }
+    ],
+    "key_benefits": [
+      "Maintains proper daily hydration",
+      "Helps keep an even, long-lasting tan",
+      "Restores elasticity and softness",
+      "Soothing and calming",
+      "Revitalises and refreshes the whole body"
+    ],
+    "indications": ["Daily after-sun care", "Tan maintenance", "Dehydrated skin after sun", "Face and body"],
+    "instructions": [
+      "Apply all over the body.",
+      "Massage gently until fully absorbed."
+    ],
+    "ingredients": "Aqua, Caprylic/Capric Triglyceride, Aloe Barbadensis Leaf Juice, Glycerin, Cetearyl Alcohol, Stearic Acid, Prunus Amygdalus Dulcis Oil, Butyrospermum Parkii Butter, Glyceryl Stearate, Glucose, Sorbitol, Sodium Glutamate, Urea, Sodium PCA, Glycine, Lactic Acid, Hydrolyzed Wheat Protein, Panthenol, Tocopheryl Acetate, Ceteareth-25, Xanthan Gum, Parfum, Sodium Benzoate, Potassium Sorbate, Benzyl Alcohol, Dehydroacetic Acid, Phenoxyethanol, Ethylhexylglycerin.",
+    "belongs_to_systems": [{ "sku": "HY-SUN-SYSTEM", "name": "Hypo Sun System 2026" }],
+    "tags": ["after-sun", "aftersun", "moisturizer", "hydration", "tan", "sun-care", "face", "body", "summer", "home-care", "retail"]
+  },
+
+  {
+    "id": "sun-glow",
+    "sku": "HY-SUN-GLOW-001",
+    "slug": "sun-glow",
+    "name": "Sun Glow — Illuminating After-Sun Lotion",
+    "short_name": "Sun Glow",
+    "category": "home-care",
+    "subcategory": "Sun Care",
+    "type": "Illuminating After-Sun Lotion",
+    "size": "100 ml",
+    "price": 2800,
+    "currency": "eur",
+    "professional_use_only": false,
+    "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
+    "image": "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=900&q=85&auto=format&fit=crop",
+    "short_description": "A radiance-boosting after-sun that brightens the skin and enhances your tan with subtle golden highlights — the “glow” effect everyone wants. Silky, emollient and protective.",
+    "full_description": "A soft emulsion that brightens the skin, enhancing your tan with subtle golden highlights. With a silky, emollient texture, it protects, moisturises and soothes from the very first application thanks to the synergy of its active ingredients — precious coconut and argan oils, functional panthenol, antioxidant vitamin E and toning horsetail extract. The product restores elasticity and freshness, helping to prevent skin ageing. The must-have illuminating after-sun to give your tan the glow it deserves.",
+    "active_ingredients": [
+      { "name": "Panthenol", "action": "Moisturising, soothing and reparative." },
+      { "name": "Vitamin E (Tocopheryl acetate)", "action": "Antioxidant protection; helps prevent skin ageing." },
+      { "name": "Horsetail Extract (Equisetum Arvense Extract)", "action": "Toning and remineralising." },
+      { "name": "Coconut Oil (Cocos Nucifera Oil)", "action": "Carries fatty acids that replenish the intercellular cement stripped by salt and chlorine." },
+      { "name": "Argan Oil (Argania Spinosa Kernel Oil)", "action": "Nourishing and emollient; restores elasticity and freshness." }
+    ],
+    "key_benefits": [
+      "Radiance-boosting “glow” effect",
+      "Enhances tan with subtle golden highlights",
+      "Silky, emollient, non-greasy texture",
+      "Protects, moisturises and soothes",
+      "Restores elasticity and helps prevent ageing"
+    ],
+    "indications": ["Tan enhancement", "Radiance / glow", "After-sun care", "Face and body"],
+    "instructions": [
+      "Apply a sufficient amount of the product to the desired area.",
+      "Massage in until fully absorbed."
+    ],
+    "ingredients": "Aqua, Caprylic/capric triglyceride, Glycerin, Cetearyl alcohol, Stearic acid, Glyceryl stearate, Panthenol, Argania spinosa kernel oil, Cocos nucifera oil, Equisetum arvense extract, Tocopheryl acetate, Synthetic fluorphlogopite, Titanium dioxide, Tin oxide, Ceteareth-25, Xanthan gum, Parfum, Benzyl alcohol, Phenoxyethanol, Dehydroacetic acid, Ethylhexylglycerin, Tetrasodium glutamate diacetate, CI 77491.",
+    "belongs_to_systems": [{ "sku": "HY-SUN-SYSTEM", "name": "Hypo Sun System 2026" }],
+    "tags": ["after-sun", "aftersun", "illuminating", "glow", "radiance", "argan", "coconut", "sun-care", "face", "body", "summer", "home-care", "retail"]
   }
 ]

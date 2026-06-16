@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hypo Sun System 2026 — Hypodermical Benelux</title>
+  <meta name="description" content="Hypo Sun System 2026 — a comprehensive summer suncare range: 2 sun creams and 3 after-sun lotions to protect your skin and preserve your treatment results. For face and body." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Bodoni+Moda:ital,wght@0,700;1,400&family=Anton&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/header.css" />
+  <link rel="stylesheet" href="/assets/css/bubbles.css" />
+  <link rel="stylesheet" href="/shop/assets/css/shop.css" />
+</head>
+<body>
+  <header class="site-header header--transparent" id="site-header">
+    <div class="header-inner container">
+      <a href="/" class="logo" aria-label="Hypodermical home">
+        <img src="/assets/images/hypodermical-bubbles-animated.svg" alt="" class="logo-mark" width="28" height="24" />
+        <span class="logo-text">hypodermical<span class="logo-dot">.</span></span>
+      </a>
+      <nav class="header-nav" aria-label="Primary">
+        <a href="/pages/method.html" class="nav-link">The Method</a>
+        <a href="/pages/treatments.html" class="nav-link">Treatments</a>
+        <a href="/pages/professionals.html" class="nav-link">Professionals</a>
+        <a href="/shop/" class="nav-link nav-link--active" aria-current="page">Shop</a>
+      </nav>
+      <div class="header-actions">
+        <a href="/shop/cart.html" class="header-cart-btn" aria-label="Shopping cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-badge" style="display:none" aria-live="polite">0</span>
+        </a>
+        <a href="/pages/contact.html" class="btn-header">Request a Demo</a>
+        <button class="header-nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="collection-hero section--black" id="collection-hero"></section>
+  <section class="collection-overview section--white" id="collection-overview"></section>
+  <main class="collection-main" id="collection-grid-section">
+    <div class="container">
+      <div class="collection-grid product-grid" id="collection-grid" role="list"></div>
+    </div>
+  </main>
+  <section class="collection-description section--grey" id="collection-description"></section>
+
+  <script>
+    window.HYPO_COLLECTION_CONFIG = {
+      skus: ['HY-SUN-SHIELD50-001', 'HY-SUN-VEIL30-001', 'HY-SUN-REC-001', 'HY-SUN-BAL-001', 'HY-SUN-GLOW-001'],
+      tagline: 'Summer 2026 — Sun Care',
+      title: 'Hypo Sun',
+      titleItalic: 'System 2026',
+      description: 'A comprehensive summer suncare range — 2 sun creams and 3 after-sun lotions — designed to protect your skin and preserve the results of your treatments throughout the period of maximum sun exposure. Perfect for use on both face and body.',
+      descriptionTitle: 'About the Hypo Sun System',
+      descriptionLong: 'For summer 2026 we have launched a new, comprehensive range of suncare products comprising five items to meet all your skin’s needs during the period of maximum sun exposure. Two protective moisturising sunscreens — Sun Veil 30 for daily protection and Sun Shield 50 for high protection — are paired with three after-sun lotions: Sun Recovery to restore, Sun Balance to maintain, and Sun Glow to illuminate. Hypo Sun is perfect for use on both the face and the body.\n\nThese aren’t ordinary sunscreens. They protect and preserve the work you’ve done on your skin and the results you’ve achieved throughout the year, helping you achieve a healthy, long-lasting tan. The technology relies on Lactobacillus Ferment to balance the microbiome, Niacinamide to help prevent dark spots and strengthen the barrier, Maritime Pine Extract as a powerful antioxidant that protects collagen, Vitamin E as a membrane repairer, and Argan and Coconut oils in the after-suns to replenish the intercellular cement stripped away by salt and chlorine.',
+      protocol: {
+        sessions: 'Daily',
+        frequency: 'Before sun · reapply after swimming · after-sun post-exposure',
+        duration: 'Face & body',
+        proOnly: false
+      }
+    };
+  </script>
+
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/shop/assets/js/cart.js" defer></script>
+  <script src="/shop/assets/js/collection-page.js" defer></script>
+</body>
+</html>
