@@ -81,22 +81,23 @@
 
   /* ───────────── Hero ───────────── */
 
-  function priceMarkup(p) {
-    if (p.professional_use_only) {
-      return { cls: 'pro', text: 'Request Pricing', note: 'Professional access required' };
-    }
-    if (p.price == null) {
-      return { cls: 'pro', text: 'Price on Request', note: 'Contact us to order' };
-    }
+  function resolvePrice(p, ctx) {
+    if (window.HypoPricing) return window.HypoPricing.resolve(p, ctx);
+    if (p.professional_use_only) return { label: 'Request Pricing', note: 'Professional access required', purchasable: false, proGated: true, isTrade: false };
+    if (p.price == null) return { label: 'Price on Request', note: 'Contact us to order', purchasable: false, proGated: false, isTrade: false };
+    return { label: '€' + (p.price / 100).toFixed(2).replace('.', ','), note: 'VAT included · Free shipping over €75', purchasable: true, proGated: false, isTrade: false };
+  }
+
+  function priceMarkup(price) {
     return {
-      cls: '',
-      text: '€' + (p.price / 100).toFixed(2).replace('.', ','),
-      note: 'VAT included · Free shipping over €75'
+      cls: price.isTrade ? 'trade' : (price.purchasable ? '' : 'pro'),
+      text: price.label,
+      note: price.note
     };
   }
 
-  function actionsMarkup(p) {
-    if (p.professional_use_only) {
+  function actionsMarkup(p, price) {
+    if (price.proGated) {
       return `
         <div class="pro-gate" role="note">
           <div class="pro-gate__icon" aria-hidden="true">
@@ -107,16 +108,16 @@
           </div>
           <div class="pro-gate__body">
             <div class="pro-gate__title">Professional Access Required</div>
-            <p class="pro-gate__copy">This product is reserved for certified Hypodermical partner centres. It cannot be purchased individually without professional training.</p>
+            <p class="pro-gate__copy">This product is reserved for certified professionals. Apply for a trade account to order it at wholesale pricing.</p>
             <div class="pro-gate__actions">
-              <a href="/pages/professionals.html?ref=${encodeURIComponent(p.sku)}" class="btn-primary">Become a Partner</a>
-              <a href="/pages/find-a-center.html" class="btn-secondary">Find a Centre</a>
+              <a href="/pages/professionals.html?ref=${encodeURIComponent(p.sku)}" class="btn-primary">Apply for Trade Account</a>
+              <a href="/pages/contact.html?ref=${encodeURIComponent(p.sku)}" class="btn-secondary">Contact Us</a>
             </div>
           </div>
         </div>
       `;
     }
-    if (p.price == null) {
+    if (!price.purchasable) {
       return `
         <a href="/pages/contact.html?ref=${encodeURIComponent(p.sku)}" class="btn-primary" style="flex:1;">
           Contact to Order →
@@ -134,10 +135,9 @@
     `;
   }
 
-  function badgeMarkup(p) {
-    if (p.professional_use_only) {
-      return `<span class="bubble-tag pro product-hero__badge">Pro Only</span>`;
-    }
+  function badgeMarkup(p, price) {
+    if (price.isTrade) return `<span class="bubble-tag trade product-hero__badge">Trade Price</span>`;
+    if (p.professional_use_only) return `<span class="bubble-tag pro product-hero__badge">Pro Only</span>`;
     return `<span class="bubble-tag product-hero__badge">Available Online</span>`;
   }
 
@@ -151,15 +151,16 @@
     return pills.map(t => `<span>${esc(t)}</span>`).join('');
   }
 
-  function heroMarkup(p) {
-    const price = priceMarkup(p);
+  function heroMarkup(p, ctx) {
+    const resolved = resolvePrice(p, ctx);
+    const price = priceMarkup(resolved);
     return `
       <section class="product-hero">
         <div class="product-hero__media">
           <span class="bubble-ring bubble-ring--1" aria-hidden="true"></span>
           <span class="bubble-ring bubble-ring--2" aria-hidden="true"></span>
           <span class="bubble-ring bubble-ring--3" aria-hidden="true"></span>
-          ${badgeMarkup(p)}
+          ${badgeMarkup(p, resolved)}
           <img src="${esc(p.image)}" alt="${esc(p.name)}" />
         </div>
         <div class="product-hero__details">
@@ -173,7 +174,7 @@
             <span class="product-hero__price ${price.cls}">${esc(price.text)}</span>
             <span class="product-hero__price-note">${esc(price.note)}</span>
           </div>
-          <div class="product-hero__actions">${actionsMarkup(p)}</div>
+          <div class="product-hero__actions">${actionsMarkup(p, resolved)}</div>
           ${p.note ? `<p class="product-hero__note"><strong>Note:</strong> ${esc(p.note)}</p>` : ''}
         </div>
       </section>
@@ -378,7 +379,7 @@
             This product is part of a protocol that addresses
             <strong>${count} of the 16 biological markers</strong> of ageing.
           </p>
-          <a href="/pages/method.html" class="bio-markers-mini__link">Discover the Method →</a>
+          <a href="/pages/about.html" class="bio-markers-mini__link">About the Method →</a>
         </div>
       </section>
     `;
@@ -457,10 +458,10 @@
     return `
       <section class="find-a-centre">
         <div class="find-a-centre__inner">
-          <span class="bubble-tag white">Treatment Network</span>
-          <h2 class="find-a-centre__title">This product is used at certified Hypodermical partner centres.</h2>
-          <p class="find-a-centre__copy">Book a consultation at a partner centre to experience the full protocol with trained professionals.</p>
-          <a href="/pages/find-a-center.html" class="btn-ghost-light">Find a Centre →</a>
+          <span class="bubble-tag white">Trade Accounts</span>
+          <h2 class="find-a-centre__title">A professional product, available at trade pricing.</h2>
+          <p class="find-a-centre__copy">Certified clinics and aesthetic professionals can apply for a Hypodermical trade account to order this product at wholesale pricing.</p>
+          <a href="/pages/professionals.html?ref=${encodeURIComponent(p.sku)}" class="btn-ghost-light">Apply for a Trade Account →</a>
         </div>
       </section>
     `;
@@ -494,13 +495,13 @@
     `;
   }
 
-  function render(p, products) {
+  function render(p, products, ctx) {
     const root = document.getElementById('product-root');
     const parentSystem = findParentSystem(products, p);
 
     const html = [
       buildBreadcrumb(p, products),
-      heroMarkup(p),
+      heroMarkup(p, ctx),
       protocolStripSection(products, p, parentSystem),
       fullDescriptionSection(p),
       benefitsSection(p),
@@ -551,9 +552,9 @@
 
     if (dec) dec.addEventListener('click', () => { qtyInput.value = Math.max(1, getQty() - 1); });
     if (inc) inc.addEventListener('click', () => { qtyInput.value = Math.min(99, getQty() + 1); });
-    if (addBtn) addBtn.addEventListener('click', () => HypoCart.add(p, getQty()));
-    if (buyBtn) buyBtn.addEventListener('click', () => {
-      HypoCart.add(p, getQty());
+    if (addBtn) addBtn.addEventListener('click', () => { HypoCart.add(p, getQty()); });
+    if (buyBtn) buyBtn.addEventListener('click', async () => {
+      await HypoCart.add(p, getQty());
       window.location.href = '/shop/cart.html';
     });
   }
@@ -562,10 +563,13 @@
     const slug = resolveSlug();
     if (!slug) { renderError(); return; }
     try {
-      const products = await window.HypoProducts.all();
+      const [products, ctx] = await Promise.all([
+        window.HypoProducts.all(),
+        window.HypoPricing ? window.HypoPricing.ready() : Promise.resolve({ tier: 'retail', prices: {} })
+      ]);
       const product = findProduct(products, slug);
       if (!product) { renderError(); return; }
-      render(product, products);
+      render(product, products, ctx);
     } catch (err) {
       console.error('Failed to load product:', err);
       renderError();

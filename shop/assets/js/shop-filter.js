@@ -12,42 +12,52 @@ const ShopFilter = (() => {
     query: ''
   };
   let allProducts = [];
+  let pricingCtx = { tier: 'retail', prices: {} };
 
-  function priceLabel(p) {
-    if (p.professional_use_only || !p.price) return 'Request Pricing';
-    return '€' + (p.price / 100).toFixed(2).replace('.', ',');
+  /** Resolve a price descriptor for a product given the pricing context. */
+  function priceFor(p) {
+    if (window.HypoPricing) return window.HypoPricing.resolve(p, pricingCtx);
+    if (p.professional_use_only || p.price == null) {
+      return { label: 'Request Pricing', purchasable: false, proGated: !!p.professional_use_only, isTrade: false };
+    }
+    return { label: '€' + (p.price / 100).toFixed(2).replace('.', ','), purchasable: true, proGated: false, isTrade: false };
   }
 
   function productCard(p) {
     const isPro = p.professional_use_only;
     const subcat = p.subcategory || p.category;
     const detailHref = `/shop/${p.category}/${p.slug}.html`;
+    const price = priceFor(p);
 
-    const badge = isPro
-      ? `<span class="bubble-tag pro product-card__badge">Pro Only</span>`
-      : `<span class="bubble-tag product-card__badge">Retail</span>`;
+    const badge = price.isTrade
+      ? `<span class="bubble-tag trade product-card__badge">Trade Price</span>`
+      : isPro
+        ? `<span class="bubble-tag pro product-card__badge">Pro Only</span>`
+        : `<span class="bubble-tag product-card__badge">Retail</span>`;
 
-    const action = isPro
-      ? `<a href="${detailHref}" class="product-card__action pro" aria-label="View ${p.short_name}">
-           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-         </a>`
-      : `<button class="product-card__action" data-add-to-cart data-sku="${p.sku}" aria-label="Add ${p.short_name} to cart">
+    const action = price.purchasable
+      ? `<button class="product-card__action" data-add-to-cart data-sku="${p.sku}" aria-label="Add ${p.short_name} to cart">
            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-         </button>`;
+         </button>`
+      : `<a href="${detailHref}" class="product-card__action pro" aria-label="View ${p.short_name}">
+           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+         </a>`;
+
+    const showOverlay = isPro && !price.purchasable;
 
     return `
       <a class="product-card" href="${detailHref}" role="listitem" data-sku="${p.sku}">
         <div class="product-card__img-wrap">
           ${badge}
           <img src="${p.image}" alt="${escapeHtml(p.name)}" class="product-card__img" loading="lazy" />
-          ${isPro ? `<div class="product-card__pro-overlay"><span class="product-card__pro-overlay-text">Professional Access Required</span></div>` : ''}
+          ${showOverlay ? `<div class="product-card__pro-overlay"><span class="product-card__pro-overlay-text">Professional Access Required</span></div>` : ''}
         </div>
         <div class="product-card__body">
           <span class="product-card__subcat">${escapeHtml(subcat)}</span>
           <h3 class="product-card__name">${escapeHtml(p.short_name || p.name)}</h3>
           <span class="product-card__size">${escapeHtml(p.size || '')}</span>
           <div class="product-card__footer" onclick="event.stopPropagation()">
-            <span class="product-card__price ${isPro ? 'pro' : ''}">${priceLabel(p)}</span>
+            <span class="product-card__price ${price.isTrade ? 'trade' : (price.purchasable ? '' : 'pro')}">${price.label}</span>
             ${action}
           </div>
         </div>
@@ -172,6 +182,16 @@ const ShopFilter = (() => {
       bindFilters();
       render();
       renderRetailSpotlight('retail-spotlight', 4);
+      // Overlay trade pricing once (and if) it resolves for approved B2B users.
+      if (window.HypoPricing) {
+        window.HypoPricing.ready().then(ctx => {
+          if (ctx && ctx.tier === 'trade') {
+            pricingCtx = ctx;
+            render();
+            renderRetailSpotlight('retail-spotlight', 4);
+          }
+        }).catch(() => {});
+      }
     } catch (err) {
       console.error('Failed to initialize shop:', err);
       const grid = document.getElementById('product-grid');

@@ -28,41 +28,51 @@
       .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   }
 
-  function priceLabel(p) {
-    if (p.professional_use_only || !p.price) return 'Request Pricing';
-    return '€' + (p.price / 100).toFixed(2).replace('.', ',');
+  /** Resolve a price descriptor for a product given the pricing context. */
+  function priceFor(p, ctx) {
+    if (window.HypoPricing) return window.HypoPricing.resolve(p, ctx);
+    // Fallback when pricing.js isn't loaded — retail-only behaviour.
+    if (p.professional_use_only || p.price == null) {
+      return { label: 'Request Pricing', purchasable: false, proGated: !!p.professional_use_only, isTrade: false };
+    }
+    return { label: '€' + (p.price / 100).toFixed(2).replace('.', ','), purchasable: true, proGated: false, isTrade: false };
   }
 
-  function productCard(p) {
-    const isPro = p.professional_use_only;
+  function productCard(p, ctx) {
     const subcat = p.subcategory || p.category;
     const detailHref = `/shop/${p.category}/${p.slug}.html`;
+    const price = priceFor(p, ctx);
+    const isPro = p.professional_use_only;
 
-    const badge = isPro
-      ? `<span class="bubble-tag pro product-card__badge">Pro Only</span>`
-      : `<span class="bubble-tag product-card__badge">Available Online</span>`;
+    const badge = price.isTrade
+      ? `<span class="bubble-tag trade product-card__badge">Trade Price</span>`
+      : isPro
+        ? `<span class="bubble-tag pro product-card__badge">Pro Only</span>`
+        : `<span class="bubble-tag product-card__badge">Available Online</span>`;
 
-    const action = isPro
-      ? `<a href="${detailHref}" class="product-card__action pro" aria-label="View ${esc(p.short_name)}">
-           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-         </a>`
-      : `<button class="product-card__action" data-add-to-cart data-sku="${esc(p.sku)}" aria-label="Add ${esc(p.short_name)} to cart">
+    const action = price.purchasable
+      ? `<button class="product-card__action" data-add-to-cart data-sku="${esc(p.sku)}" aria-label="Add ${esc(p.short_name)} to cart">
            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-         </button>`;
+         </button>`
+      : `<a href="${detailHref}" class="product-card__action pro" aria-label="View ${esc(p.short_name)}">
+           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+         </a>`;
+
+    const showOverlay = isPro && !price.purchasable;
 
     return `
       <a class="product-card" href="${detailHref}" role="listitem" data-sku="${esc(p.sku)}">
         <div class="product-card__img-wrap">
           ${badge}
           <img src="${esc(p.image)}" alt="${esc(p.name)}" class="product-card__img" loading="lazy" />
-          ${isPro ? `<div class="product-card__pro-overlay"><span class="product-card__pro-overlay-text">Professional Access Required</span></div>` : ''}
+          ${showOverlay ? `<div class="product-card__pro-overlay"><span class="product-card__pro-overlay-text">Professional Access Required</span></div>` : ''}
         </div>
         <div class="product-card__body">
           <span class="product-card__subcat">${esc(subcat)}</span>
           <h3 class="product-card__name">${esc(p.short_name || p.name)}</h3>
           <span class="product-card__size">${esc(p.size || '')}</span>
           <div class="product-card__footer" onclick="event.stopPropagation()">
-            <span class="product-card__price ${isPro ? 'pro' : ''}">${esc(priceLabel(p))}</span>
+            <span class="product-card__price ${price.isTrade ? 'trade' : (price.purchasable ? '' : 'pro')}">${esc(price.label)}</span>
             ${action}
           </div>
         </div>
@@ -139,7 +149,7 @@
     `;
   }
 
-  function renderGrid(cfg, products, systemProduct) {
+  function renderGrid(cfg, products, systemProduct, ctx) {
     const el = document.getElementById('collection-grid');
     if (!el) return;
     let skus;
@@ -152,7 +162,7 @@
     const cards = skus
       .map(sku => products.find(p => p.sku === sku))
       .filter(Boolean)
-      .map(productCard)
+      .map(p => productCard(p, ctx))
       .join('');
     el.innerHTML = cards || '<p class="no-results">No products available for this collection yet.</p>';
   }
@@ -209,13 +219,16 @@
     }
     if (cfg.title) document.title = cfg.title + ' — Hypodermical Benelux';
     try {
-      const products = await window.HypoProducts.all();
+      const [products, ctx] = await Promise.all([
+        window.HypoProducts.all(),
+        window.HypoPricing ? window.HypoPricing.ready() : Promise.resolve({ tier: 'retail', prices: {} })
+      ]);
       const systemProduct = cfg.systemSku
         ? products.find(p => p.sku === cfg.systemSku)
         : null;
       renderHero(cfg);
       renderOverview(cfg, products, systemProduct);
-      renderGrid(cfg, products, systemProduct);
+      renderGrid(cfg, products, systemProduct, ctx);
       renderDescription(cfg);
     } catch (err) {
       console.error('Failed to load collection:', err);

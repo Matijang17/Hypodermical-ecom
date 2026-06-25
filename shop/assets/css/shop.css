@@ -250,6 +250,15 @@
   color: var(--color-white);
 }
 
+/* Trade (wholesale) tier — shown to approved B2B accounts */
+.bubble-tag.trade,
+.product-card__badge.trade {
+  background: #1f3d2b;
+  color: var(--color-white);
+}
+.product-card__price.trade { color: #1f3d2b; }
+.product-hero__price.trade { color: #1f3d2b; }
+
 .product-card__pro-overlay {
   position: absolute;
   inset: 0;

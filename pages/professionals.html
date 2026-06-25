@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Professionals — Hypodermical Benelux</title>
+  <meta name="description" content="Apply for a Hypodermical trade account: wholesale pricing, the full professional range, and a dedicated dashboard for clinics and aesthetic professionals." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Bodoni+Moda:ital,wght@0,700;1,400&family=Anton&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/header.css" />
+  <link rel="stylesheet" href="/assets/css/bubbles.css" />
+  <link rel="stylesheet" href="/assets/css/pages.css" />
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="site-header header--transparent" id="site-header">
+    <div class="header-inner container">
+      <a href="/" class="logo" aria-label="Hypodermical home">
+        <img src="/assets/images/hypodermical-bubbles-animated.svg" alt="" class="logo-mark" width="28" height="24" />
+        <span class="logo-text">hypodermical<span class="logo-dot">.</span></span>
+      </a>
+      <nav class="header-nav" aria-label="Primary">
+        <a href="/shop/" class="nav-link">Shop</a>
+        <a href="/pages/professionals.html" class="nav-link nav-link--active" aria-current="page">For Professionals</a>
+        <a href="/pages/about.html" class="nav-link">About</a>
+        <a href="/pages/contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="/shop/cart.html" class="header-cart-btn" aria-label="Shopping cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-badge" style="display:none" aria-live="polite">0</span>
+        </a>
+        <a href="/shop/" class="btn-header">Shop Now</a>
+        <button class="header-nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="page-hero">
+    <span class="bubble-float" style="width:420px;height:420px;top:-120px;right:-120px;border-color:rgba(255,255,255,0.06);" aria-hidden="true"></span>
+    <span class="bubble-float" style="width:200px;height:200px;bottom:20px;left:-60px;border-color:rgba(255,255,255,0.05);animation-delay:-3s;" aria-hidden="true"></span>
+    <div class="container page-hero__inner">
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">/</span><span>For Professionals</span>
+      </nav>
+      <span class="bubble-tag white">Trade Accounts</span>
+      <h1>The professional range, at <em>trade pricing</em>.</h1>
+      <p class="page-hero__sub">
+        Clinics, spas and certified aesthetic professionals can apply for a Hypodermical trade
+        account — unlocking wholesale pricing, the full professional catalogue, and a dedicated
+        ordering dashboard.
+      </p>
+      <ul class="b2b-benefits" style="margin-top:28px;color:rgba(255,255,255,0.85);">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Wholesale trade pricing across the range</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Access to professional-only treatment products</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Reorder fast from your account dashboard</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══ APPLY + LOGIN ═══ -->
+  <section class="auth-section" id="auth">
+    <div class="container">
+      <div class="auth-grid">
+
+        <!-- Apply -->
+        <div class="auth-card">
+          <h2 class="auth-card__title">Apply for a trade account</h2>
+          <p class="auth-card__lead">Tell us about your business. Applications are reviewed and approved manually — you’ll get access to trade pricing once verified.</p>
+
+          <div class="form-message" id="apply-msg" role="status"></div>
+
+          <form id="apply-form" novalidate>
+            <div class="form-field">
+              <label for="company_name">Business / clinic name *</label>
+              <input type="text" id="company_name" name="company_name" autocomplete="organization" required />
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="contact_name">Contact name *</label>
+                <input type="text" id="contact_name" name="contact_name" autocomplete="name" required />
+              </div>
+              <div class="form-field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="vat_number">VAT number</label>
+                <input type="text" id="vat_number" name="vat_number" />
+              </div>
+              <div class="form-field">
+                <label for="license_number">Professional licence no.</label>
+                <input type="text" id="license_number" name="license_number" />
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="country">Country</label>
+              <select id="country" name="country">
+                <option value="">Select…</option>
+                <option>Belgium</option><option>Netherlands</option><option>Luxembourg</option>
+                <option>France</option><option>Germany</option><option>Other (EU)</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="apply_email">Work email *</label>
+              <input type="email" id="apply_email" name="email" autocomplete="email" required />
+            </div>
+            <div class="form-field">
+              <label for="apply_password">Create password *</label>
+              <input type="password" id="apply_password" name="password" autocomplete="new-password" minlength="8" required />
+              <span class="hint">At least 8 characters.</span>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn-primary" id="apply-submit">Submit application →</button>
+            </div>
+            <p class="form-config-warning" id="apply-config" hidden>
+              ⚠ Trade accounts aren’t connected yet. Add your Supabase keys in
+              <code>/assets/js/supabase-config.js</code> to enable sign-up.
+            </p>
+          </form>
+        </div>
+
+        <!-- Login -->
+        <div class="auth-card">
+          <h2 class="auth-card__title">Trade login</h2>
+          <p class="auth-card__lead">Already approved? Sign in to see your trade pricing and dashboard.</p>
+
+          <div class="form-message" id="login-msg" role="status"></div>
+
+          <form id="login-form" novalidate>
+            <div class="form-field">
+              <label for="login_email">Email</label>
+              <input type="email" id="login_email" name="email" autocomplete="email" required />
+            </div>
+            <div class="form-field">
+              <label for="login_password">Password</label>
+              <input type="password" id="login_password" name="password" autocomplete="current-password" required />
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn-primary" id="login-submit">Sign in →</button>
+            </div>
+          </form>
+
+          <div style="margin-top:28px;border-top:1px solid var(--color-border);padding-top:20px;">
+            <p style="font-size:13px;color:var(--color-grey);">
+              Not a professional? <a href="/shop/" class="link-btn" style="font-size:13px;">Shop home care →</a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer"></footer>
+
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/site-footer.js" defer></script>
+  <script src="/shop/assets/js/cart.js" defer></script>
+  <script src="/assets/js/supabase-config.js" defer></script>
+  <script src="/assets/js/auth.js" defer></script>
+  <script src="/assets/js/auth-ui.js" defer></script>
+  <script>
+    (function () {
+      const qs = new URLSearchParams(location.search);
+      const next = qs.get('next');
+      const dest = (next && next.startsWith('/')) ? next : '/pages/account/';
+
+      function msg(el, text, kind) {
+        el.className = 'form-message is-' + kind;
+        el.textContent = text;
+      }
+      function setBusy(btn, busy, label) {
+        btn.disabled = busy;
+        btn.textContent = busy ? 'Please wait…' : label;
+      }
+
+      document.addEventListener('DOMContentLoaded', async () => {
+        const configured = window.HypoAuth && HypoAuth.isConfigured();
+        if (!configured) {
+          document.getElementById('apply-config').hidden = false;
+        } else {
+          // If already signed in, skip straight to the dashboard.
+          try {
+            const user = await HypoAuth.getUser();
+            if (user) location.replace(dest);
+          } catch {}
+        }
+
+        const applyForm = document.getElementById('apply-form');
+        const applyMsg = document.getElementById('apply-msg');
+        const applyBtn = document.getElementById('apply-submit');
+
+        applyForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (!configured) { msg(applyMsg, 'Trade sign-up is not configured yet.', 'error'); return; }
+          const fd = new FormData(applyForm);
+          const details = Object.fromEntries(fd.entries());
+          if (!details.company_name || !details.email || !details.password) {
+            msg(applyMsg, 'Please fill in the required fields.', 'error'); return;
+          }
+          setBusy(applyBtn, true, 'Submit application →');
+          try {
+            const { session } = await HypoAuth.apply(details);
+            if (session) {
+              msg(applyMsg, 'Application received — taking you to your dashboard…', 'success');
+              setTimeout(() => location.replace('/pages/account/'), 900);
+            } else {
+              msg(applyMsg, 'Application received. Please check your email to confirm your address, then sign in.', 'success');
+              applyForm.reset();
+            }
+          } catch (err) {
+            msg(applyMsg, err.message || 'Something went wrong. Please try again.', 'error');
+          } finally {
+            setBusy(applyBtn, false, 'Submit application →');
+          }
+        });
+
+        const loginForm = document.getElementById('login-form');
+        const loginMsg = document.getElementById('login-msg');
+        const loginBtn = document.getElementById('login-submit');
+
+        loginForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (!configured) { msg(loginMsg, 'Trade login is not configured yet.', 'error'); return; }
+          const email = document.getElementById('login_email').value.trim();
+          const password = document.getElementById('login_password').value;
+          if (!email || !password) { msg(loginMsg, 'Enter your email and password.', 'error'); return; }
+          setBusy(loginBtn, true, 'Sign in →');
+          try {
+            await HypoAuth.signIn(email, password);
+            msg(loginMsg, 'Signed in — redirecting…', 'success');
+            location.replace(dest);
+          } catch (err) {
+            msg(loginMsg, err.message || 'Invalid email or password.', 'error');
+            setBusy(loginBtn, false, 'Sign in →');
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

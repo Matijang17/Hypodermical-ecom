@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Account — Hypodermical Benelux</title>
+  <meta name="description" content="Your Hypodermical trade account: status, trade pricing, and orders." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Bodoni+Moda:ital,wght@0,700;1,400&family=Anton&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/header.css" />
+  <link rel="stylesheet" href="/assets/css/bubbles.css" />
+  <link rel="stylesheet" href="/assets/css/pages.css" />
+</head>
+<body class="has-header-offset" data-require-auth="approved" data-allow-pending>
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner container">
+      <a href="/" class="logo" aria-label="Hypodermical home">
+        <img src="/assets/images/hypodermical-bubbles-animated.svg" alt="" class="logo-mark" width="28" height="24" />
+        <span class="logo-text">hypodermical<span class="logo-dot">.</span></span>
+      </a>
+      <nav class="header-nav" aria-label="Primary">
+        <a href="/shop/" class="nav-link">Shop</a>
+        <a href="/pages/professionals.html" class="nav-link">For Professionals</a>
+        <a href="/pages/about.html" class="nav-link">About</a>
+        <a href="/pages/contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="/shop/cart.html" class="header-cart-btn" aria-label="Shopping cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-badge" style="display:none" aria-live="polite">0</span>
+        </a>
+        <button class="btn-header" id="signout-btn" type="button">Sign Out</button>
+        <button class="header-nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="account-main">
+    <div class="container">
+      <div class="account-header">
+        <div>
+          <span class="bubble-tag">Trade Account</span>
+          <h1 id="account-company">My account</h1>
+          <p class="account-header__meta" id="account-email"></p>
+        </div>
+      </div>
+
+      <!-- Status banner -->
+      <div class="status-banner" id="status-banner" role="status">
+        <span class="status-banner__dot"></span>
+        <div>
+          <h2 id="status-title">Checking your account…</h2>
+          <p id="status-copy"></p>
+        </div>
+      </div>
+
+      <div class="account-grid">
+        <!-- Side nav -->
+        <nav class="account-nav" aria-label="Account sections">
+          <button data-panel="overview" class="is-active">Overview</button>
+          <button data-panel="prices">Trade Prices</button>
+          <button data-panel="orders">Orders</button>
+          <button data-panel="details">Account Details</button>
+        </nav>
+
+        <!-- Panels -->
+        <div>
+          <!-- Overview -->
+          <section class="account-panel is-active" id="panel-overview" tabindex="-1">
+            <h2 style="margin-bottom:16px;">Overview</h2>
+            <p style="margin-bottom:24px;color:var(--color-charcoal);">
+              Welcome back. From here you can view your trade pricing, place orders at wholesale
+              rates, and review your order history.
+            </p>
+            <div class="value-grid">
+              <a class="value-card" href="/shop/" style="display:block;">
+                <h3>Shop at trade prices →</h3>
+                <p>Browse the full range. Approved accounts see wholesale pricing automatically.</p>
+              </a>
+              <button class="value-card" type="button" data-jump="prices" style="text-align:left;">
+                <h3>View price list →</h3>
+                <p>See every product’s trade price in one table.</p>
+              </button>
+              <button class="value-card" type="button" data-jump="orders" style="text-align:left;">
+                <h3>Order history →</h3>
+                <p>Track and reorder past purchases.</p>
+              </button>
+            </div>
+          </section>
+
+          <!-- Trade prices -->
+          <section class="account-panel" id="panel-prices" tabindex="-1">
+            <h2 style="margin-bottom:16px;">Trade price list</h2>
+            <div id="prices-gate" class="panel-empty" hidden>
+              Trade pricing unlocks once your account is approved.
+            </div>
+            <div id="prices-loading" class="panel-loading">Loading prices…</div>
+            <div id="prices-empty" class="panel-empty" hidden>
+              No trade prices have been published yet. Please check back soon.
+            </div>
+            <div style="overflow-x:auto;">
+              <table class="price-table" id="prices-table" hidden>
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th class="num">Retail</th>
+                    <th class="num">Trade</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="prices-body"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Orders -->
+          <section class="account-panel" id="panel-orders" tabindex="-1">
+            <h2 style="margin-bottom:16px;">Your orders</h2>
+            <div id="orders-loading" class="panel-loading">Loading orders…</div>
+            <div id="orders-empty" class="panel-empty" hidden>
+              No orders yet. <a href="/shop/" class="link-btn">Start shopping →</a>
+            </div>
+            <div style="overflow-x:auto;">
+              <table class="price-table" id="orders-table" hidden>
+                <thead>
+                  <tr><th>Date</th><th>Order</th><th>Status</th><th class="num">Total</th></tr>
+                </thead>
+                <tbody id="orders-body"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Details -->
+          <section class="account-panel" id="panel-details" tabindex="-1">
+            <h2 style="margin-bottom:16px;">Account details</h2>
+            <div class="detail-list" id="details-list"></div>
+            <p style="margin-top:18px;font-size:13px;color:var(--color-grey);">
+              Need to update your business details? <a href="/pages/contact.html" class="link-btn" style="font-size:13px;">Contact us →</a>
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer"></footer>
+
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/site-footer.js" defer></script>
+  <script src="/shop/assets/js/cart.js" defer></script>
+  <script src="/assets/js/supabase-config.js" defer></script>
+  <script src="/assets/js/auth.js" defer></script>
+  <script src="/assets/js/auth-ui.js" defer></script>
+  <script src="/shop/assets/js/pricing.js" defer></script>
+  <script>
+    (function () {
+      function esc(s) {
+        if (s == null) return '';
+        return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      }
+      const fmt = c => '€' + (c / 100).toFixed(2).replace('.', ',');
+      const $ = id => document.getElementById(id);
+
+      /* ── Tab switching ── */
+      function activate(panel) {
+        document.querySelectorAll('.account-nav button[data-panel]').forEach(b =>
+          b.classList.toggle('is-active', b.dataset.panel === panel));
+        document.querySelectorAll('.account-panel').forEach(p =>
+          p.classList.toggle('is-active', p.id === 'panel-' + panel));
+        const el = $('panel-' + panel);
+        if (el) el.focus({ preventScroll: true });
+      }
+      document.querySelectorAll('.account-nav button[data-panel]').forEach(b =>
+        b.addEventListener('click', () => activate(b.dataset.panel)));
+      document.querySelectorAll('[data-jump]').forEach(b =>
+        b.addEventListener('click', () => activate(b.dataset.jump)));
+
+      /* ── Sign out ── */
+      $('signout-btn').addEventListener('click', async () => {
+        try { await HypoAuth.signOut(); } catch {}
+        location.href = '/';
+      });
+
+      /* ── Status banner ── */
+      function renderStatus(status) {
+        const banner = $('status-banner');
+        const title = $('status-title');
+        const copy = $('status-copy');
+        banner.classList.remove('status-banner--pending','status-banner--approved','status-banner--rejected');
+        if (status === 'approved') {
+          banner.classList.add('status-banner--approved');
+          title.textContent = 'Account approved';
+          copy.textContent = 'You have full access to trade pricing across the shop.';
+        } else if (status === 'rejected') {
+          banner.classList.add('status-banner--rejected');
+          title.textContent = 'Application not approved';
+          copy.innerHTML = 'We were unable to verify this account. Please <a href="/pages/contact.html">contact us</a>.';
+        } else {
+          banner.classList.add('status-banner--pending');
+          title.textContent = 'Application under review';
+          copy.textContent = 'Thanks for applying. We’re verifying your business — you’ll see trade pricing here once approved.';
+        }
+      }
+
+      /* ── Details ── */
+      function renderDetails(p, user) {
+        const rows = [
+          ['Business', p.company_name],
+          ['Contact', p.contact_name],
+          ['Email', (user && user.email) || p.email],
+          ['Phone', p.phone],
+          ['VAT number', p.vat_number],
+          ['Licence no.', p.license_number],
+          ['Country', p.country],
+          ['Status', p.status]
+        ].filter(r => r[1]);
+        $('details-list').innerHTML = rows.map(r =>
+          `<div class="detail-list__row"><span>${esc(r[0])}</span><span>${esc(r[1])}</span></div>`
+        ).join('');
+      }
+
+      /* ── Trade prices ── */
+      async function renderPrices(approved) {
+        const loading = $('prices-loading');
+        if (!approved) {
+          loading.hidden = true;
+          $('prices-gate').hidden = false;
+          return;
+        }
+        try {
+          const [products, ctx] = await Promise.all([
+            window.HypoProducts.all(),
+            window.HypoPricing ? window.HypoPricing.ready() : Promise.resolve({ tier: 'retail', prices: {} })
+          ]);
+          loading.hidden = true;
+          const rows = products
+            .map(p => ({ p, t: ctx.prices[p.sku] }))
+            .filter(x => x.t);
+          if (!rows.length) { $('prices-empty').hidden = false; return; }
+          $('prices-body').innerHTML = rows.map(({ p, t }) => `
+            <tr>
+              <td>${esc(p.short_name || p.name)}</td>
+              <td>${esc(p.category)}</td>
+              <td class="num">${p.price != null ? fmt(p.price) : '—'}</td>
+              <td class="num trade-price">${fmt(t.price_cents)}</td>
+              <td class="num"><a class="link-btn" href="/shop/${esc(p.category)}/${esc(p.slug)}.html" style="font-size:12px;">View →</a></td>
+            </tr>
+          `).join('');
+          $('prices-table').hidden = false;
+        } catch (e) {
+          loading.textContent = 'Could not load trade prices. Please refresh.';
+        }
+      }
+
+      /* ── Orders ── */
+      async function renderOrders(user) {
+        const loading = $('orders-loading');
+        try {
+          const sb = await HypoAuth.client();
+          const { data, error } = await sb.from('orders')
+            .select('created_at, stripe_session_id, status, amount_total, currency')
+            .order('created_at', { ascending: false });
+          loading.hidden = true;
+          if (error || !data || !data.length) { $('orders-empty').hidden = false; return; }
+          $('orders-body').innerHTML = data.map(o => `
+            <tr>
+              <td>${esc((o.created_at || '').slice(0,10))}</td>
+              <td>${esc((o.stripe_session_id || '—').slice(-10))}</td>
+              <td>${esc(o.status || 'pending')}</td>
+              <td class="num">${o.amount_total != null ? fmt(o.amount_total) : '—'}</td>
+            </tr>
+          `).join('');
+          $('orders-table').hidden = false;
+        } catch (e) {
+          loading.hidden = true;
+          $('orders-empty').hidden = false;
+        }
+      }
+
+      /* ── Init (after auth-ui guard has confirmed a session) ── */
+      document.addEventListener('DOMContentLoaded', async () => {
+        if (!window.HypoAuth || !HypoAuth.isConfigured()) return; // guard will redirect
+        let user, profile;
+        try {
+          user = await HypoAuth.getUser();
+          profile = await HypoAuth.getProfile({ force: true });
+        } catch {}
+        if (!user) return; // guard handles redirect
+
+        if (profile) {
+          $('account-company').textContent = profile.company_name || 'My account';
+          renderStatus(profile.status);
+          renderDetails(profile, user);
+        } else {
+          renderStatus('pending');
+        }
+        $('account-email').textContent = user.email || '';
+
+        const approved = !!profile && profile.status === 'approved';
+        renderPrices(approved);
+        renderOrders(user);
+      });
+    })();
+  </script>
+</body>
+</html>

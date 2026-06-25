@@ -45,34 +45,33 @@ async function checkoutCart(cartItems) {
     return;
   }
 
-  // Strip invalid items (no Stripe price configured)
-  const valid = cartItems.filter(i => i.stripe_price_id && !i.stripe_price_id.includes('REPLACE'));
-  if (valid.length === 0) {
-    alert('Checkout is not yet configured. Please contact us to complete your order.');
-    console.warn('No items have valid Stripe price IDs:', cartItems);
-    return;
-  }
-
   const btn = document.querySelector('[data-checkout-btn]');
   if (btn) { btn.disabled = true; btn.textContent = 'Redirecting…'; }
 
   try {
+    // Authenticate the request so the server can apply trade pricing for
+    // approved B2B accounts. Anonymous shoppers get retail pricing.
+    let accessToken = null;
+    if (window.HypoAuth && HypoAuth.isConfigured()) {
+      try { accessToken = await HypoAuth.getAccessToken(); } catch { /* retail */ }
+    }
+
     const res = await fetch('/api/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        items: valid.map(item => ({
-          price: item.stripe_price_id,
-          quantity: item.qty
-        })),
+        // Send only SKU + quantity — the server recomputes prices.
+        items: cartItems.map(item => ({ sku: item.sku, quantity: item.qty })),
+        access_token: accessToken,
         success_url: window.location.origin + '/shop/checkout-success.html',
         cancel_url:  window.location.origin + '/shop/checkout-cancel.html'
       })
     });
 
     if (!res.ok) {
-      const errBody = await res.text();
-      throw new Error('Checkout request failed: ' + res.status + ' ' + errBody);
+      let message = 'Checkout request failed (' + res.status + ').';
+      try { const body = await res.json(); if (body && body.error) message = body.error; } catch {}
+      throw new Error(message);
     }
 
     const { url } = await res.json();
@@ -81,8 +80,8 @@ async function checkoutCart(cartItems) {
     window.location.href = url;
   } catch (err) {
     console.error('Checkout error:', err);
-    alert('Checkout failed. Please try again or contact us directly.');
-    if (btn) { btn.disabled = false; btn.textContent = 'Checkout'; }
+    alert(err.message || 'Checkout failed. Please try again or contact us directly.');
+    if (btn) { btn.disabled = false; btn.textContent = 'Checkout →'; }
   }
 }
 

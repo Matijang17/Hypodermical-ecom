@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Hypodermical Benelux</title>
+  <meta name="description" content="Contact Hypodermical Benelux — questions about products, orders, or trade accounts." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Bodoni+Moda:ital,wght@0,700;1,400&family=Anton&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/header.css" />
+  <link rel="stylesheet" href="/assets/css/bubbles.css" />
+  <link rel="stylesheet" href="/assets/css/pages.css" />
+</head>
+<body class="has-header-offset">
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner container">
+      <a href="/" class="logo" aria-label="Hypodermical home">
+        <img src="/assets/images/hypodermical-bubbles-animated.svg" alt="" class="logo-mark" width="28" height="24" />
+        <span class="logo-text">hypodermical<span class="logo-dot">.</span></span>
+      </a>
+      <nav class="header-nav" aria-label="Primary">
+        <a href="/shop/" class="nav-link">Shop</a>
+        <a href="/pages/professionals.html" class="nav-link">For Professionals</a>
+        <a href="/pages/about.html" class="nav-link">About</a>
+        <a href="/pages/contact.html" class="nav-link nav-link--active" aria-current="page">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="/shop/cart.html" class="header-cart-btn" aria-label="Shopping cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-badge" style="display:none" aria-live="polite">0</span>
+        </a>
+        <a href="/shop/" class="btn-header">Shop Now</a>
+        <button class="header-nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="prose-section section--white">
+    <div class="container">
+      <div style="max-width:760px;margin:0 auto 40px;">
+        <span class="bubble-tag">Get in touch</span>
+        <h1 style="margin:14px 0 12px;">Contact us</h1>
+        <p>Questions about a product, an order, or a trade account? Send us a message and we’ll get back to you.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Form -->
+        <div>
+          <div class="form-message" id="contact-msg" role="status"></div>
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="c_name">Name *</label>
+                <input type="text" id="c_name" name="name" autocomplete="name" required />
+              </div>
+              <div class="form-field">
+                <label for="c_email">Email *</label>
+                <input type="email" id="c_email" name="email" autocomplete="email" required />
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="c_subject">Subject</label>
+              <select id="c_subject" name="subject">
+                <option>Product question</option>
+                <option>Order / shipping</option>
+                <option>Trade account</option>
+                <option>Press / partnership</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="c_message">Message *</label>
+              <textarea id="c_message" name="message" rows="6" required></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn-primary" id="contact-submit">Send message →</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Details -->
+        <aside>
+          <div class="contact-detail">
+            <div class="contact-detail__label">Email</div>
+            <div class="contact-detail__value"><a href="mailto:info@hypodermical.eu" id="contact-email-link">info@hypodermical.eu</a></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail__label">Trade enquiries</div>
+            <div class="contact-detail__value"><a href="/pages/professionals.html">Apply for a trade account →</a></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail__label">Distribution</div>
+            <div class="contact-detail__value">Benelux &amp; EU</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail__label">Response time</div>
+            <div class="contact-detail__value">Within 1–2 business days</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer"></footer>
+
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/site-footer.js" defer></script>
+  <script src="/shop/assets/js/cart.js" defer></script>
+  <script src="/assets/js/supabase-config.js" defer></script>
+  <script src="/assets/js/auth.js" defer></script>
+  <script src="/assets/js/auth-ui.js" defer></script>
+  <script>
+    /* Backend-free default: compose a mailto from the form. To use a real
+       form backend, point CONTACT_ENDPOINT at it (see SETUP.md). */
+    (function () {
+      const CONTACT_EMAIL = 'info@hypodermical.eu';
+      const CONTACT_ENDPOINT = null; // e.g. '/api/contact' or a Formspree URL
+
+      const form = document.getElementById('contact-form');
+      const out = document.getElementById('contact-msg');
+      const btn = document.getElementById('contact-submit');
+
+      function msg(text, kind) { out.className = 'form-message is-' + kind; out.textContent = text; }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(form).entries());
+        const ref = new URLSearchParams(location.search).get('ref');
+        if (!data.name || !data.email || !data.message) { msg('Please complete the required fields.', 'error'); return; }
+
+        if (CONTACT_ENDPOINT) {
+          btn.disabled = true; btn.textContent = 'Sending…';
+          try {
+            const res = await fetch(CONTACT_ENDPOINT, {
+              method: 'POST', headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ ...data, ref })
+            });
+            if (!res.ok) throw new Error('Request failed');
+            msg('Thanks — your message has been sent. We’ll be in touch shortly.', 'success');
+            form.reset();
+          } catch (err) {
+            msg('Could not send right now. Please email us directly at ' + CONTACT_EMAIL + '.', 'error');
+          } finally {
+            btn.disabled = false; btn.textContent = 'Send message →';
+          }
+          return;
+        }
+
+        // Mailto fallback
+        const subject = encodeURIComponent('[' + (data.subject || 'Enquiry') + '] ' + data.name + (ref ? ' · ref ' + ref : ''));
+        const body = encodeURIComponent(
+          'Name: ' + data.name + '\nEmail: ' + data.email +
+          (ref ? '\nProduct ref: ' + ref : '') +
+          '\n\n' + data.message
+        );
+        window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + subject + '&body=' + body;
+        msg('Opening your email app… If nothing happens, email us at ' + CONTACT_EMAIL + '.', 'info');
+      });
+    })();
+  </script>
+</body>
+</html>

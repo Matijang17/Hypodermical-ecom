@@ -20,27 +20,57 @@ const HypoCart = {
   },
 
   /**
-   * Add a product to the cart.
-   * Pro-only products redirect to the professionals access flow instead.
+   * Add a product to the cart. Pricing-aware: approved B2B accounts add at
+   * trade pricing; everyone else at retail. Professional-only products that
+   * the visitor cannot purchase redirect to the trade-account flow.
+   * @param {object} product
+   * @param {number} [qty=1]
+   * @returns {Promise<void>}
    */
-  add(product, qty = 1) {
-    if (product.professional_use_only) {
-      window.location.href = '/pages/professionals.html?ref=' + encodeURIComponent(product.sku);
+  async add(product, qty = 1) {
+    // Resolve the price tier for this visitor (falls back to retail).
+    let price = null;
+    if (window.HypoPricing) {
+      try {
+        const ctx = await window.HypoPricing.ready();
+        price = window.HypoPricing.resolve(product, ctx);
+      } catch { /* fall through to retail */ }
+    }
+
+    const purchasable = price ? price.purchasable : !product.professional_use_only && product.price != null;
+    if (!purchasable) {
+      if (product.professional_use_only) {
+        window.location.href = '/pages/professionals.html?ref=' + encodeURIComponent(product.sku);
+      } else {
+        window.location.href = '/pages/contact.html?ref=' + encodeURIComponent(product.sku);
+      }
       return;
     }
+
+    const unitPrice = price ? price.cents : product.price;
+    const tier = price ? price.tier : 'retail';
+    const stripePriceId = price ? price.stripe_price_id : product.stripe_price_id;
+
     const cart = this.get();
     const existing = cart.find(i => i.sku === product.sku);
-    if (existing) existing.qty += qty;
-    else cart.push({
-      sku: product.sku,
-      name: product.name,
-      short_name: product.short_name,
-      price: product.price,
-      size: product.size,
-      stripe_price_id: product.stripe_price_id,
-      image: product.image,
-      qty
-    });
+    if (existing) {
+      existing.qty += qty;
+      existing.price = unitPrice;            // keep in sync with current tier
+      existing.tier = tier;
+      existing.stripe_price_id = stripePriceId;
+    } else {
+      cart.push({
+        sku: product.sku,
+        name: product.name,
+        short_name: product.short_name,
+        price: unitPrice,
+        tier,
+        size: product.size,
+        stripe_price_id: stripePriceId,
+        image: product.image,
+        qty
+      });
+    }
     this.save(cart);
     this._toast(product.short_name || product.name);
   },

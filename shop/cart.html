@@ -24,10 +24,10 @@
       </a>
 
       <nav class="header-nav" aria-label="Primary">
-        <a href="/pages/method.html" class="nav-link">The Method</a>
-        <a href="/pages/treatments.html" class="nav-link">Treatments</a>
-        <a href="/pages/professionals.html" class="nav-link">Professionals</a>
         <a href="/shop/" class="nav-link">Shop</a>
+        <a href="/pages/professionals.html" class="nav-link">For Professionals</a>
+        <a href="/pages/about.html" class="nav-link">About</a>
+        <a href="/pages/contact.html" class="nav-link">Contact</a>
       </nav>
 
       <div class="header-actions">
@@ -139,7 +139,7 @@
           <li class="cart-item" data-sku="${escapeHtml(item.sku)}">
             <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}" class="cart-item__img" loading="lazy" />
             <div class="cart-item__details">
-              <span class="cart-item__name">${escapeHtml(item.name)}</span>
+              <span class="cart-item__name">${escapeHtml(item.name)}${item.tier === 'trade' ? ' <span class="bubble-tag trade" style="margin-left:8px;">Trade</span>' : ''}</span>
               <span class="cart-item__size">${escapeHtml(item.size || '')}</span>
               <div class="cart-item__qty-row">
                 <div class="cart-item__qty">
@@ -195,5 +195,9 @@
       });
     })();
   </script>
+  <script src="/assets/js/supabase-config.js" defer></script>
+  <script src="/assets/js/auth.js" defer></script>
+  <script src="/assets/js/auth-ui.js" defer></script>
+  <script src="/shop/assets/js/pricing.js" defer></script>
 </body>
 </html>
