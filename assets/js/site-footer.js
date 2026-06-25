@@ -13,9 +13,8 @@
   footer.innerHTML = `
     <div class="container" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:48px;margin-bottom:48px;">
       <div>
-        <a href="/" class="logo" style="margin-bottom:18px;">
-          <img src="/assets/images/hypodermical-bubbles-animated.svg" alt="" class="logo-mark" width="28" height="24" />
-          <span class="logo-text" style="color:var(--color-white);">hypodermical<span class="logo-dot">.</span></span>
+        <a href="/" class="logo" style="margin-bottom:18px;display:inline-block;">
+          <img src="/assets/images/Hypodermical-Logo.webp" alt="Hypodermical" class="logo-img logo-img--light" width="64" height="64" />
         </a>
         <p style="font-size:13px;line-height:1.6;margin-top:14px;color:rgba(255,255,255,0.55);">Professional aesthetic systems built on 16 biological markers of ageing. Benelux distribution.</p>
       </div>

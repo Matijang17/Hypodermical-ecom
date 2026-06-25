@@ -7,7 +7,11 @@
   --color-black:      #0A0A0A;
   --color-white:      #FFFFFF;
   --color-charcoal:   #333333;
-  --color-sand:       #D9D0C7;
+  /* Brand accent — cool platinum/silver, matched to the metallic
+     bubbles in the Hypodermical logo (replaces the former warm sand). */
+  --color-sand:       #C3C8CE;
+  --color-silver:     #C3C8CE;
+  --color-silver-dark:#9AA0A6;
   --color-grey:       #888888;
   --color-light-grey: #F2F2F2;
   --color-border:     #E0E0E0;
