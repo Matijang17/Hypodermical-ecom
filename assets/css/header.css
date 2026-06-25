@@ -57,7 +57,7 @@
 /* ----------- Brand logo image (full lockup) ----------- */
 .logo-img {
   display: block;
-  height: 50px;
+  height: 64px;
   width: auto;
   flex-shrink: 0;
   transition: filter 0.3s var(--ease-out);
@@ -68,7 +68,7 @@
 .header--scrolled .logo-img { filter: none; }
 /* Light (white-silhouette) variant for dark surfaces, e.g. the footer. */
 .logo-img--light { filter: brightness(0) invert(1); }
-@media (max-width: 600px) { .logo-img { height: 40px; } }
+@media (max-width: 600px) { .logo-img { height: 52px; } }
 
 .logo-text {
   font-family: var(--font-primary);
