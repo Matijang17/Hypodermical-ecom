@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product — Hypodermical Benelux</title>
+  <meta name="description" content="Hypodermical Benelux — Professional aesthetic product detail." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Bodoni+Moda:ital,wght@0,700;1,400&family=Anton&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/header.css" />
+  <link rel="stylesheet" href="/assets/css/bubbles.css" />
+  <link rel="stylesheet" href="/shop/assets/css/shop.css" />
+  <link rel="icon" type="image/webp" href="/assets/images/Hypodermical-Logo.webp" />
+  <link rel="apple-touch-icon" href="/assets/images/Hypodermical-Logo.webp" />
+</head>
+<body class="has-header-offset">
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner container">
+      <a href="/" class="logo" aria-label="Hypodermical home">
+        <img src="/assets/images/Hypodermical-Logo.webp" alt="Hypodermical" class="logo-img" width="50" height="50" />
+      </a>
+      <nav class="header-nav" aria-label="Primary">
+        <a href="/shop/" class="nav-link">Shop</a>
+        <a href="/pages/professionals.html" class="nav-link">For Professionals</a>
+        <a href="/pages/about.html" class="nav-link">About</a>
+        <a href="/pages/contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="/shop/cart.html" class="header-cart-btn" aria-label="Shopping cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-badge" style="display:none" aria-live="polite">0</span>
+        </a>
+        <a href="/pages/contact.html" class="btn-header">Request a Demo</a>
+        <button class="header-nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="product-page">
+    <div class="container">
+      <div id="product-root">
+        <p class="product-loading">Loading product…</p>
+      </div>
+    </div>
+  </main>
+
+  <template id="tpl-error">
+    <div class="product-error">
+      <span class="bubble-tag">Not Found</span>
+      <h1>Product not found</h1>
+      <p>We couldn't find that product. It may have been moved or the URL is incorrect.</p>
+      <a href="/shop/" class="btn-primary">Back to Shop →</a>
+    </div>
+  </template>
+
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/shop/assets/js/cart.js" defer></script>
+  <script src="/shop/assets/js/stripe-checkout.js" defer></script>
+  <script src="/shop/assets/js/product-detail.js" defer></script>
+  <script src="/assets/js/supabase-config.js" defer></script>
+  <script src="/assets/js/auth.js" defer></script>
+  <script src="/assets/js/auth-ui.js" defer></script>
+  <script src="/shop/assets/js/pricing.js" defer></script>
+</body>
+</html>

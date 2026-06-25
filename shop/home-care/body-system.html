@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hypo Body System 2026 — Hypodermical Benelux</title>
+  <meta name="description" content="Hypo Body System 2026 — a five-product home body range: firming, anti-cellulite, warming and refreshing care to extend your professional body-treatment results." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Bodoni+Moda:ital,wght@0,700;1,400&family=Anton&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/header.css" />
+  <link rel="stylesheet" href="/assets/css/bubbles.css" />
+  <link rel="stylesheet" href="/shop/assets/css/shop.css" />
+  <link rel="icon" type="image/webp" href="/assets/images/Hypodermical-Logo.webp" />
+  <link rel="apple-touch-icon" href="/assets/images/Hypodermical-Logo.webp" />
+</head>
+<body>
+  <header class="site-header header--transparent" id="site-header">
+    <div class="header-inner container">
+      <a href="/" class="logo" aria-label="Hypodermical home">
+        <img src="/assets/images/Hypodermical-Logo.webp" alt="Hypodermical" class="logo-img" width="50" height="50" />
+      </a>
+      <nav class="header-nav" aria-label="Primary">
+        <a href="/shop/" class="nav-link nav-link--active" aria-current="page">Shop</a>
+        <a href="/pages/professionals.html" class="nav-link">For Professionals</a>
+        <a href="/pages/about.html" class="nav-link">About</a>
+        <a href="/pages/contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="/shop/cart.html" class="header-cart-btn" aria-label="Shopping cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-badge" style="display:none" aria-live="polite">0</span>
+        </a>
+        <a href="/pages/contact.html" class="btn-header">Request a Demo</a>
+        <button class="header-nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="collection-hero section--black" id="collection-hero"></section>
+  <section class="collection-overview section--white" id="collection-overview"></section>
+  <main class="collection-main" id="collection-grid-section">
+    <div class="container">
+      <div class="collection-grid product-grid" id="collection-grid" role="list"></div>
+    </div>
+  </main>
+  <section class="collection-description section--grey" id="collection-description"></section>
+
+  <script>
+    window.HYPO_COLLECTION_CONFIG = {
+      skus: ['HY-BODY-LIFT-001', 'HY-BODY-TONE-001', 'HY-BODY-CELL-001', 'HY-BODY-THERMO-001', 'HY-BODY-CRYO-001'],
+      tagline: '2026 — Body Care',
+      title: 'Hypo Body',
+      titleItalic: 'System 2026',
+      description: 'A complete five-product home body range — firming, anti-cellulite, warming and refreshing care — designed to extend and maintain the results of your professional body treatments between salon visits.',
+      descriptionTitle: 'About the Hypo Body System',
+      descriptionLong: 'The Hypo Body System is a home-maintenance collection that complements professional body protocols. Five products work together across the key body concerns: Hypo Lift Volume tones and adds volume to breast and gluteal areas, Hypo Tone Firm nourishes and tones all over, Hypo Cell Recode targets the appearance of cellulite and localised fat, Hypo Thermo Active delivers a warming massage action that boosts active penetration, and Hypo Cryo Active refreshes heavy, tired legs.\n\nUsed daily — on the days you are not being treated in the salon — the system keeps skin firm, smooth and comfortable, preserving the results achieved with professional treatments.',
+      protocol: {
+        sessions: 'Daily',
+        frequency: '1–2× per day · massage step before activity',
+        duration: 'Body',
+        proOnly: false
+      }
+    };
+  </script>
+
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/shop/assets/js/cart.js" defer></script>
+  <script src="/shop/assets/js/collection-page.js" defer></script>
+  <script src="/assets/js/supabase-config.js" defer></script>
+  <script src="/assets/js/auth.js" defer></script>
+  <script src="/assets/js/auth-ui.js" defer></script>
+  <script src="/shop/assets/js/pricing.js" defer></script>
+</body>
+</html>
