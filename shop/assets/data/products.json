@@ -1563,7 +1563,7 @@
     "currency": "eur",
     "professional_use_only": false,
     "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
-    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/hypo-lift-volume.webp",
     "short_description": "Volumizing emulsion for breast and gluteal areas. Tones and gives elasticity with Volufiline, horsetail and hyaluronic acid.",
     "full_description": "A volumizing emulsion designed to tone and add volume to the breast and gluteal areas, leaving skin firmer and more elastic. The formula combines Volufiline to support adipose volume in targeted areas, horsetail extract rich in remineralising silica, hyaluronic acid for deep hydration and almond oil to nourish and soften. Part of the Hypo Body System for home maintenance between professional treatments.",
     "active_ingredients": [
@@ -1598,7 +1598,7 @@
     "currency": "eur",
     "professional_use_only": false,
     "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
-    "image": "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/hypo-tone-firm.webp",
     "short_description": "A nourishing daily body cream for all skin types with almond and macadamia oils, ceramides and mallow extract. Hydrates while toning.",
     "full_description": "A rich yet fast-absorbing body cream suitable for all skin types. It hydrates and helps tone the skin thanks to a blend of almond and macadamia oils, skin-identical ceramides that reinforce the barrier, and soothing mallow extract. Use daily all over the body to keep skin supple, comfortable and toned, alone or alongside the rest of the Hypo Body System.",
     "active_ingredients": [
@@ -1633,7 +1633,7 @@
     "currency": "eur",
     "professional_use_only": false,
     "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
-    "image": "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/hypo-cell-recode.webp",
     "short_description": "Anti-cellulite emulsion with phosphatidylcholine, escin, caffeine and carnitine plus fucus, centella and horse chestnut. Works on cellulite and firmness.",
     "full_description": "A targeted anti-cellulite emulsion that acts on the appearance of cellulite and skin firmness. Phosphatidylcholine and escin support microcirculation and drainage, while caffeine and carnitine encourage the breakdown and mobilisation of localised fat. Plant extracts of fucus, centella asiatica and horse chestnut complete the formula to refine and tone the silhouette. A key step in the Hypo Body System home protocol.",
     "active_ingredients": [
@@ -1669,7 +1669,7 @@
     "currency": "eur",
     "professional_use_only": false,
     "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
-    "image": "https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/hypo-thermo-active.webp",
     "short_description": "A warming massage cream with marine oak, horse chestnut and cayenne pepper. Targets cellulite and localised fat and enhances active penetration.",
     "full_description": "A warming massage cream that creates a pleasant heat effect to target cellulite and localised fat while enhancing the penetration of active ingredients. Marine oak and horse chestnut support microcirculation, and cayenne pepper produces the warming, stimulating action. Also ideal as a warm-up massage cream before physical activity. Use as the massage step of the Hypo Body System.",
     "active_ingredients": [
@@ -1703,7 +1703,7 @@
     "currency": "eur",
     "professional_use_only": false,
     "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
-    "image": "https://images.unsplash.com/photo-1601612628452-9e99ced43524?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/hypo-crio-active.webp",
     "short_description": "A refreshing cryo lotion with menthol, blueberry extract, centella and camphor for heavy, tired legs and a fresh, light feeling.",
     "full_description": "A refreshing lotion with an immediate cooling effect that relieves the sensation of heavy, tired legs. Menthol and camphor deliver a cryo fresh sensation, blueberry extract and centella asiatica support microcirculation and vessel tone, leaving legs feeling light and revitalised. The refreshing finishing step of the Hypo Body System.",
     "active_ingredients": [
