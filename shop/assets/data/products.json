@@ -315,7 +315,7 @@
     "currency": "eur",
     "professional_use_only": false,
     "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
-    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/enzymatic-gel.webp",
     "short_description": "Deep cleansing gel with enzymes for oily skin. Soap-free. With panthenol, aloe vera, papaya and mango extracts.",
     "active_ingredients": [
       { "name": "Enzymes (PEG-40 hydrogenated castor oil)", "action": "Deep cleansing." },
