@@ -344,7 +344,7 @@
     "currency": "eur",
     "professional_use_only": false,
     "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
-    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/botanical-astringent.webp",
     "short_description": "Alcohol-based herbal lotion for cleansing and toning. Anti-inflammatory, antibacterial, astringent. Activates keratin cell renewal.",
     "active_ingredients": [
       { "name": "Ethyl Alcohol 30%", "action": "Cleansing and antiseptic." },
@@ -373,7 +373,7 @@
     "currency": "eur",
     "professional_use_only": false,
     "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
-    "image": "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/anti-irritant-cream.webp",
     "short_description": "Regenerating, soothing and anti-inflammatory cream. Promotes recovery and strengthens skin barrier after peeling.",
     "active_ingredients": [
       { "name": "Bisabolol", "action": "Anti-inflammatory, soothing." },
