@@ -761,6 +761,16 @@
     background-position: center, center top;
   }
 
+  .collection-hero--carbo2xy {
+    background-image:
+      linear-gradient(180deg,
+        rgba(10, 10, 10, 0.78) 0%,
+        rgba(10, 10, 10, 0.62) 45%,
+        rgba(10, 10, 10, 0.85) 100%),
+      url("/assets/images/carboxy-face_hero.webp");
+    background-position: center, center top;
+  }
+
   .shop-search-bar { padding: 18px 0; }
   .shop-main { padding: 40px 0 70px; }
 
@@ -1936,6 +1946,20 @@
       rgba(10, 10, 10, 0.42) 78%,
       rgba(10, 10, 10, 0.22) 100%),
     url("/assets/images/illumineye_hero.webp");
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, cover;
+  background-position: center, right center;
+}
+
+/* CarbO2xy Face collection — editorial hero image (page-scoped) */
+.collection-hero--carbo2xy {
+  background-image:
+    linear-gradient(95deg,
+      rgba(10, 10, 10, 0.96) 24%,
+      rgba(10, 10, 10, 0.8) 50%,
+      rgba(10, 10, 10, 0.42) 78%,
+      rgba(10, 10, 10, 0.22) 100%),
+    url("/assets/images/carboxy-face_hero.webp");
   background-repeat: no-repeat, no-repeat;
   background-size: cover, cover;
   background-position: center, right center;
