@@ -970,7 +970,7 @@
     "currency": "eur",
     "professional_use_only": true,
     "stripe_price_id": null,
-    "image": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/anti-couperose-mask-fluid.webp",
     "short_description": "Intensive refreshing and anti-couperose mask. Strengthens capillaries, soothes reddened and sensitive skin.",
     "active_ingredients": [
       { "name": "Perfluorodecalin", "action": "Oxygen delivery." },
@@ -1032,7 +1032,7 @@
     "currency": "eur",
     "professional_use_only": false,
     "stripe_price_id": "price_REPLACE_WITH_REAL_ID",
-    "image": "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=900&q=85&auto=format&fit=crop",
+    "image": "/assets/images/products/anti-couperose-balsam.webp",
     "short_description": "Moisturising cream to strengthen skin barrier and natural defence. Relieves capillary fragility and redness in sensitive skin prone to rosacea.",
     "active_ingredients": [
       { "name": "Arnica + Chamomile Oils", "action": "Anti-inflammatory, soothing." },
